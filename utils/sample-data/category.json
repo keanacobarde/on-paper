@@ -1,0 +1,26 @@
+{
+  "-NjY7jJfcJ64m2GOg5Wy": {
+    "firebaseKey": "-NjY7jJfcJ64m2GOg5Wy",
+    "name": "Utilities",
+    "spendingLimit": 1330,
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY7jJggix7gHrDrdAn": {
+    "firebaseKey": "-NjY7jJggix7gHrDrdAn",
+    "name": "School",
+    "spendingLimit": 750,
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY7jJhMN8t1Lsl6ioD": {
+    "firebaseKey": "-NjY7jJhMN8t1Lsl6ioD",
+    "name": "Food",
+    "spendingLimit": 300,
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY7jJhMN8t1Lsl6ioE": {
+    "firebaseKey": "-NjY7jJhMN8t1Lsl6ioE",
+    "name": "Fun",
+    "spendingLimit": 250,
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  }
+}

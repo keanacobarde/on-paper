@@ -1,0 +1,98 @@
+{
+  "-NjY8gaJO9Rf-xXXhcow": {
+    "firebaseKey": "-NjY8gaJO9Rf-xXXhcow",
+    "name": "Rent",
+    "amount": 1200.00,
+    "month": "October",
+    "category": "Utilities",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaK1Dj2lX48EuM0": {
+    "firebaseKey": "-NjY8gaK1Dj2lX48EuM0",
+    "name": "Phone",
+    "amount": 50,
+    "month": "October",
+    "category": "Utilities",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaK1Dj2lX48EuM1": {
+    "firebaseKey": "-NjY8gaK1Dj2lX48EuM1",
+    "name": "Gas",
+    "amount": 80.00,
+    "month": "October",
+    "category": "Utilities",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaLEfbZSAZ69YcE": {
+    "firebaseKey": "-NjY8gaLEfbZSAZ69YcE",
+    "name": "Semester Payment",
+    "amount": 750.00,
+    "month": "October",
+    "category": "School",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  }, 
+  "-NjYMtoCHvN-zQn0vw-t": {
+    "firebaseKey": "-NjYMtoCHvN-zQn0vw-t",
+    "name": "Sushi",
+    "amount": 50,
+    "month": "October",
+    "category": "Food",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjYMxvZBt_yA1Dy2eJC": {
+    "firebaseKey": "-NjYMxvZBt_yA1Dy2eJC",
+    "name": "Museum",
+    "amount": 40,
+    "month": "October",
+    "category": "Fun",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaLEfbZSAZ69YcF": {
+    "firebaseKey": "-NjY8gaLEfbZSAZ69YcF",
+    "name": "Rent",
+    "amount": 1200.00,
+    "month": "November",
+    "category": "Utilities",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaM_vz3lXARnBLO": {
+    "firebaseKey": "-NjY8gaM_vz3lXARnBLO",
+    "name": "Phone",
+    "amount": 50,
+    "month": "November",
+    "category": "Utilities",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaN-03F83rJJHAW": {
+    "firebaseKey": "-NjY8gaN-03F83rJJHAW",
+    "name": "Gas",
+    "amount": 80.00,
+    "month": "November",
+    "category": "Utilities",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjY8gaN-03F83rJJHAX": {
+    "firebaseKey": "-NjY8gaN-03F83rJJHAX",
+    "name": "Study.com Subscription",
+    "amount": 250.00,
+    "month": "October",
+    "category": "School",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjYZZSpIloTC3IoznAf": {
+    "firebaseKey": "-NjYZZSpIloTC3IoznAf",
+    "name": "Italian",
+    "amount": 50.00,
+    "month": "November",
+    "category": "Food",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjYZdSKQY2RJXBU9paV": {
+    "firebaseKey": "-NjYZdSKQY2RJXBU9paV",
+    "name": "Museum",
+    "amount": 40.00,
+    "month": "November",
+    "category": "Fun",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  }
+}
