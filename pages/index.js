@@ -32,8 +32,6 @@ const month = date.toLocaleDateString('default', { month: 'long' });
 export default function Dashboard() {
   const { user } = useAuth();
 
-  console.warn(user.uid);
-
   const [cards, setCards] = React.useState([]);
 
   const getAllTheCategories = () => {
