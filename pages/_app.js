@@ -11,6 +11,10 @@ const theme = createTheme({
       main: '#1A202B',
     },
   },
+  background: {
+    paper: '#EDF2F7',
+    default: 'white',
+  },
   typography: {
     fontFamily: 'system-ui',
   },

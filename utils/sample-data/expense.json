@@ -1,82 +1,98 @@
 {
   "-NjY8gaJO9Rf-xXXhcow": {
     "firebaseKey": "-NjY8gaJO9Rf-xXXhcow",
-    "name": "Legra",
-    "amount": "Godlee",
+    "name": "Rent",
+    "amount": 1200.00,
     "month": "October",
-    "category": "lgodlee0@discuz.net",
+    "category": "Utilities",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaK1Dj2lX48EuM0": {
     "firebaseKey": "-NjY8gaK1Dj2lX48EuM0",
-    "name": "Ewell",
-    "amount": "",
+    "name": "Phone",
+    "amount": 50,
     "month": "October",
-    "category": "egodwyn1@comsenz.com",
+    "category": "Utilities",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaK1Dj2lX48EuM1": {
     "firebaseKey": "-NjY8gaK1Dj2lX48EuM1",
-    "name": "Holmes",
-    "amount": "Hattersley",
+    "name": "Gas",
+    "amount": 80.00,
     "month": "October",
-    "category": "hhattersley2@soundcloud.com",
+    "category": "Utilities",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaLEfbZSAZ69YcE": {
     "firebaseKey": "-NjY8gaLEfbZSAZ69YcE",
-    "name": "Louise",
-    "amount": "Shitliffe",
+    "name": "Semester Payment",
+    "amount": 750.00,
     "month": "October",
-    "category": "lshitliffe3@columbia.edu",
+    "category": "School",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   }, 
   "-NjYMtoCHvN-zQn0vw-t": {
     "firebaseKey": "-NjYMtoCHvN-zQn0vw-t",
-    "name": "Legra",
-    "amount": "Godlee",
+    "name": "Sushi",
+    "amount": 50,
     "month": "October",
-    "category": "lgodlee0@discuz.net",
+    "category": "Food",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjYMxvZBt_yA1Dy2eJC": {
     "firebaseKey": "-NjYMxvZBt_yA1Dy2eJC",
-    "name": "Legra",
-    "amount": "Godlee",
+    "name": "Museum",
+    "amount": 40,
     "month": "October",
-    "category": "lgodlee0@discuz.net",
+    "category": "Fun",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaLEfbZSAZ69YcF": {
     "firebaseKey": "-NjY8gaLEfbZSAZ69YcF",
-    "name": "Lock",
-    "amount": "Pedwell",
+    "name": "Rent",
+    "amount": 1200.00,
     "month": "November",
-    "category": "lpedwell4@unicef.org",
+    "category": "Utilities",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaM_vz3lXARnBLO": {
     "firebaseKey": "-NjY8gaM_vz3lXARnBLO",
-    "name": "Alfredo",
-    "amount": "Brewitt",
+    "name": "Phone",
+    "amount": 50,
     "month": "November",
-    "category": "abrewitt5@acquirethisname.com",
+    "category": "Utilities",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaN-03F83rJJHAW": {
     "firebaseKey": "-NjY8gaN-03F83rJJHAW",
-    "name": "Tadeo",
-    "amount": "Kennedy",
+    "name": "Gas",
+    "amount": 80.00,
     "month": "November",
-    "category": "tkennedy6@elegantthemes.com",
+    "category": "Utilities",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY8gaN-03F83rJJHAX": {
     "firebaseKey": "-NjY8gaN-03F83rJJHAX",
-    "name": "Roby",
-    "amount": "Hufton",
+    "name": "Study.com Subscription",
+    "amount": 250.00,
+    "month": "October",
+    "category": "School",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjYZZSpIloTC3IoznAf": {
+    "firebaseKey": "-NjYZZSpIloTC3IoznAf",
+    "name": "Italian",
+    "amount": 50.00,
     "month": "November",
-    "category": "rhufton7@deviantart.com",
+    "category": "Food",
+    "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
+  },
+  "-NjYZdSKQY2RJXBU9paV": {
+    "firebaseKey": "-NjYZdSKQY2RJXBU9paV",
+    "name": "Museum",
+    "amount": 40.00,
+    "month": "November",
+    "category": "Fun",
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   }
 }

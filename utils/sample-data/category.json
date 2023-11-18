@@ -14,13 +14,13 @@
   "-NjY7jJhMN8t1Lsl6ioD": {
     "firebaseKey": "-NjY7jJhMN8t1Lsl6ioD",
     "name": "Food",
-    "spendingLimit": 990.07,
+    "spendingLimit": 300,
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   },
   "-NjY7jJhMN8t1Lsl6ioE": {
     "firebaseKey": "-NjY7jJhMN8t1Lsl6ioE",
     "name": "Fun",
-    "spendingLimit": 990.07,
+    "spendingLimit": 250,
     "uid": "A7QJic5DRdRJJRjKBXsZfrhsdhq2"
   }
 }
