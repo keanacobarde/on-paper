@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -10,6 +11,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import { useAuth } from '../utils/context/authContext';
+import { getCategories } from '../api/categoryData';
 
 function Copyright() {
   return (
@@ -23,12 +26,24 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const date = new Date();
 const month = date.toLocaleDateString('default', { month: 'long' });
 
 export default function Dashboard() {
+  const { user } = useAuth();
+
+  console.warn(user.uid);
+
+  const [cards, setCards] = React.useState([]);
+
+  const getAllTheCategories = () => {
+    getCategories(user.uid).then(setCards);
+  };
+
+  React.useEffect(() => {
+    getAllTheCategories();
+  }, []);
+
   return (
     <>
       <CssBaseline />
@@ -71,11 +86,10 @@ export default function Dashboard() {
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      {card.spendingLimit}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -88,6 +102,7 @@ export default function Dashboard() {
           </Grid>
         </Container>
       </main>
+
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
