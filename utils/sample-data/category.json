@@ -1,0 +1,26 @@
+{
+  "-NjY7jJfcJ64m2GOg5Wy": {
+    "firebaseKey": 1,
+    "name": "Carolyn",
+    "spendingLimit": "Ruffler",
+    "uid": "cruffler0@telegraph.co.uk"
+  },
+  "-NjY7jJggix7gHrDrdAn": {
+    "firebaseKey": 2,
+    "name": "Eugenius",
+    "spendingLimit": "Apperley",
+    "uid": "eapperley1@dion.ne.jp"
+  },
+  "-NjY7jJhMN8t1Lsl6ioD": {
+    "firebaseKey": 3,
+    "name": "Buddy",
+    "spendingLimit": "Daly",
+    "uid": "bdaly2@ask.com"
+  },
+  "-NjY7jJhMN8t1Lsl6ioE": {
+    "firebaseKey": 4,
+    "name": "Wrennie",
+    "spendingLimit": "Davydochkin",
+    "uid": "wdavydochkin3@mit.edu"
+  }
+}
