@@ -15,7 +15,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="https://github.com/keanacobarde">
         OnPaper
       </Link>{' '}
       {new Date().getFullYear()}
@@ -91,7 +91,7 @@ export default function Dashboard() {
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          OnPaper
         </Typography>
         <Typography
           variant="subtitle1"
