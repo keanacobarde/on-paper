@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
+import { getIncome } from '../api/incomeData';
 
 function Copyright() {
   return (
@@ -34,13 +35,19 @@ export default function Dashboard() {
   const { user } = useAuth();
 
   const [cards, setCards] = React.useState([]);
+  const [income, setIncome] = React.useState([]);
 
   const getAllTheCategories = () => {
     getCategories(user.uid).then(setCards);
   };
 
+  const getMonthlyIncome = () => {
+    getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
+  };
+
   React.useEffect(() => {
     getAllTheCategories();
+    getMonthlyIncome();
   }, []);
 
   return (
@@ -66,7 +73,7 @@ export default function Dashboard() {
               {month}
             </Typography>
             <Stack spacing={3} direction="column" alignItems="center">
-              <div className="money-display"> Test </div>
+              <div className="money-display"> ${income[0].earnings} </div>
               <div className="money-display"> Test </div>
             </Stack>
             <Stack
