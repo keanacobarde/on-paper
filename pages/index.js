@@ -65,8 +65,9 @@ export default function Dashboard() {
             >
               {month}
             </Typography>
-            <Stack spacing={3} justifyContent="center">
-              <Button variant="contained" color="primary" size="large">ADD AN EXPENSE</Button>
+            <Stack spacing={3} direction="column" alignItems="center">
+              <div className="money-display"> Test </div>
+              <div className="money-display"> Test </div>
             </Stack>
             <Stack
               sx={{ pt: 4 }}
