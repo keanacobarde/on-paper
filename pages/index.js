@@ -65,6 +65,9 @@ export default function Dashboard() {
             >
               {month}
             </Typography>
+            <Stack spacing={3} justifyContent="center">
+              <Button variant="contained" color="primary" size="large">ADD AN EXPENSE</Button>
+            </Stack>
             <Stack
               sx={{ pt: 4 }}
               direction="row"
@@ -79,7 +82,7 @@ export default function Dashboard() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={8} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
