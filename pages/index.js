@@ -45,6 +45,8 @@ export default function Dashboard() {
     getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
   };
 
+  console.warn(cards);
+
   React.useEffect(() => {
     getAllTheCategories();
     getMonthlyIncome();
@@ -82,7 +84,7 @@ export default function Dashboard() {
               >
                 Monthly Earnings:
               </Typography>
-              <div className="money-display"> ${income[0].earnings} </div>
+              <div className="money-display"> ${income[0]?.earnings} </div>
               <Typography
                 component="h1"
                 variant="h6"
@@ -102,7 +104,7 @@ export default function Dashboard() {
               >
                 Amount Unallocated:
               </Typography>
-              <div className="money-display"> Test </div>
+              <div className="money-display"> ${income[0]?.earnings} </div>
             </Stack>
             <Stack
               sx={{ pt: 4 }}
