@@ -72,8 +72,36 @@ export default function Dashboard() {
             >
               {month}
             </Typography>
-            <Stack spacing={3} direction="column" alignItems="center">
+            <Stack spacing={2} direction="column" alignItems="center">
+              <Typography
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Monthly Earnings:
+              </Typography>
               <div className="money-display"> ${income[0].earnings} </div>
+              <Typography
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Current Amount:
+              </Typography>
+              <div className="money-display"> Test </div>
+              <Typography
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Amount Unallocated:
+              </Typography>
               <div className="money-display"> Test </div>
             </Stack>
             <Stack
