@@ -37,7 +37,7 @@ const getIncome = (uid) => new Promise((resolve, reject) => {
 
 // UPDATE - PATCH
 const updateIncome = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/category/${payload.firebaseKey}.json`, {
+  fetch(`${endpoint}/income/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const updateIncome = (payload) => new Promise((resolve, reject) => {
 });
 
 const getSingleIncome = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/category/${firebaseKey}.json`, {
+  fetch(`${endpoint}/income/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
