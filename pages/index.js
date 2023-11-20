@@ -45,7 +45,7 @@ export default function Dashboard() {
     getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
   };
 
-  console.warn(cards);
+  console.warn();
 
   React.useEffect(() => {
     getAllTheCategories();
@@ -104,7 +104,7 @@ export default function Dashboard() {
               >
                 Amount Unallocated:
               </Typography>
-              <div className="money-display"> ${income[0]?.earnings} </div>
+              <div className="money-display"> ${(income[0]?.earnings - cards?.reduce((acc, curr) => acc + curr.spendingLimit, 0)).toFixed(2)} </div>
             </Stack>
             <Stack
               sx={{ pt: 4 }}
