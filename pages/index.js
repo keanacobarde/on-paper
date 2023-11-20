@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -10,6 +12,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import { useAuth } from '../utils/context/authContext';
+import { getCategories } from '../api/categoryData';
+import { getIncome } from '../api/incomeData';
 
 function Copyright() {
   return (
@@ -23,12 +28,30 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const date = new Date();
 const month = date.toLocaleDateString('default', { month: 'long' });
 
 export default function Dashboard() {
+  const { user } = useAuth();
+
+  const [cards, setCards] = React.useState([]);
+  const [income, setIncome] = React.useState([]);
+
+  const getAllTheCategories = () => {
+    getCategories(user.uid).then(setCards);
+  };
+
+  const getMonthlyIncome = () => {
+    getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
+  };
+
+  console.warn(cards);
+
+  React.useEffect(() => {
+    getAllTheCategories();
+    getMonthlyIncome();
+  }, []);
+
   return (
     <>
       <CssBaseline />
@@ -51,6 +74,38 @@ export default function Dashboard() {
             >
               {month}
             </Typography>
+            <Stack spacing={2} direction="column" alignItems="center">
+              <Typography
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Monthly Earnings:
+              </Typography>
+              <div className="money-display"> ${income[0]?.earnings} </div>
+              <Typography
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Current Amount:
+              </Typography>
+              <div className="money-display"> Test </div>
+              <Typography
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Amount Unallocated:
+              </Typography>
+              <div className="money-display"> ${income[0]?.earnings} </div>
+            </Stack>
             <Stack
               sx={{ pt: 4 }}
               direction="row"
@@ -65,17 +120,16 @@ export default function Dashboard() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={8} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      {card.spendingLimit}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -88,6 +142,7 @@ export default function Dashboard() {
           </Grid>
         </Container>
       </main>
+
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
