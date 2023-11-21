@@ -45,8 +45,6 @@ export default function Dashboard() {
     getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
   };
 
-  console.warn();
-
   React.useEffect(() => {
     getAllTheCategories();
     getMonthlyIncome();
