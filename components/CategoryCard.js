@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useRouter } from 'next/router';
 import {
   IconButton,
   Card, Grid, CardActions, CardContent, Typography, Button,
@@ -9,9 +10,11 @@ import {
 import { deleteCateogries } from '../api/categoryData';
 
 export default function CategoryCard({ categoryObj, onUpdate }) {
+  const router = useRouter();
+
   const deleteThisCategory = () => {
     if (window.confirm(`Delete ${categoryObj.name}? ALL RELATED EXPENSES WILL BE DELETED!!`)) {
-      deleteCateogries(categoryObj.id).then(() => onUpdate());
+      deleteCateogries(categoryObj.firebaseKey).then(() => onUpdate());
     }
   };
 
@@ -32,7 +35,7 @@ export default function CategoryCard({ categoryObj, onUpdate }) {
           <IconButton aria-label="delete" onClick={deleteThisCategory}>
             <DeleteIcon />
           </IconButton>
-          <Button size="small">Edit</Button>
+          <Button size="small" onClick={() => router.push(`/category/${categoryObj.firebaseKey}`)}>View Details</Button>
         </CardActions>
       </Card>
     </Grid>
@@ -41,7 +44,7 @@ export default function CategoryCard({ categoryObj, onUpdate }) {
 
 CategoryCard.propTypes = {
   categoryObj: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    firebaseKey: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     spendingLimit: PropTypes.number.isRequired,
   }).isRequired,
