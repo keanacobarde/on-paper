@@ -114,7 +114,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={() => router.push(`${page.toLowerCase()}`)}
+                onClick={() => router.push(`/${page.toLowerCase()}`)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}

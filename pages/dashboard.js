@@ -2,9 +2,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -12,11 +9,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { IconButton } from '@mui/material';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
 import { getIncome } from '../api/incomeData';
+import CategoryCard from '../components/CategoryCard';
+import { getExpenses } from '../api/expenseData';
 
 function Copyright() {
   return (
@@ -38,6 +35,7 @@ export default function Dashboard() {
 
   const [cards, setCards] = React.useState([]);
   const [income, setIncome] = React.useState([]);
+  const [expenses, setExpenses] = React.useState([]);
 
   const getAllTheCategories = () => {
     getCategories(user.uid).then(setCards);
@@ -47,9 +45,14 @@ export default function Dashboard() {
     getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
   };
 
+  const getMonthlyExpenses = () => {
+    getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
+  };
+
   React.useEffect(() => {
     getAllTheCategories();
     getMonthlyIncome();
+    getMonthlyExpenses();
   }, []);
 
   return (
@@ -92,9 +95,9 @@ export default function Dashboard() {
                 color="text.primary"
                 gutterBottom
               >
-                Current Amount:
+                Amount Left to Spend:
               </Typography>
-              <div className="money-display"> Test </div>
+              <div className="money-display"> ${income[0]?.earnings - expenses?.reduce((acc, curr) => acc + curr.amount, 0)} </div>
               <Typography
                 component="h1"
                 variant="h6"
@@ -117,29 +120,24 @@ export default function Dashboard() {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
+
           {/* End hero unit */}
+
+          {/* Start of category unit */}
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Typography
+              component="h1"
+              variant="h2"
+              align="left"
+              color="text.primary"
+              gutterBottom
+            >
+              Categories
+            </Typography>
+          </Grid>
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={8} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.name}
-                    </Typography>
-                    <Typography>
-                      {card.spendingLimit}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <IconButton aria-label="delete" onClick={() => console.warn('screee')}>
-                      <DeleteIcon />
-                    </IconButton>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+              <CategoryCard categoryObj={card} onUpdate={getAllTheCategories} />
             ))}
           </Grid>
         </Container>
