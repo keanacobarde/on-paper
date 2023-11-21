@@ -13,6 +13,7 @@ import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
 import { getIncome } from '../api/incomeData';
 import CategoryCard from '../components/CategoryCard';
+import { getExpenses } from '../api/expenseData';
 
 function Copyright() {
   return (
@@ -34,6 +35,7 @@ export default function Dashboard() {
 
   const [cards, setCards] = React.useState([]);
   const [income, setIncome] = React.useState([]);
+  const [expenses, setExpenses] = React.useState([]);
 
   const getAllTheCategories = () => {
     getCategories(user.uid).then(setCards);
@@ -43,9 +45,14 @@ export default function Dashboard() {
     getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
   };
 
+  const getMonthlyExpenses = () => {
+    getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
+  };
+
   React.useEffect(() => {
     getAllTheCategories();
     getMonthlyIncome();
+    getMonthlyExpenses();
   }, []);
 
   return (
@@ -88,9 +95,9 @@ export default function Dashboard() {
                 color="text.primary"
                 gutterBottom
               >
-                Current Amount:
+                Amount Left to Spend:
               </Typography>
-              <div className="money-display"> Test </div>
+              <div className="money-display"> ${income[0]?.earnings - expenses?.reduce((acc, curr) => acc + curr.amount, 0)} </div>
               <Typography
                 component="h1"
                 variant="h6"
