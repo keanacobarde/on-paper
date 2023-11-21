@@ -117,7 +117,21 @@ export default function Dashboard() {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
+
           {/* End hero unit */}
+
+          {/* Start of category unit */}
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Typography
+              component="h1"
+              variant="h2"
+              align="left"
+              color="text.primary"
+              gutterBottom
+            >
+              Categories
+            </Typography>
+          </Grid>
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={8} sm={6} md={4}>
