@@ -17,6 +17,7 @@ import { IconButton } from '@mui/material';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
 import { getIncome } from '../api/incomeData';
+import CategoryCard from '../components/CategoryCard';
 
 function Copyright() {
   return (
@@ -134,26 +135,7 @@ export default function Dashboard() {
           </Grid>
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={8} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.name}
-                    </Typography>
-                    <Typography>
-                      {card.spendingLimit}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <IconButton aria-label="delete" onClick={() => console.warn('screee')}>
-                      <DeleteIcon />
-                    </IconButton>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+              <CategoryCard categoryObj={card} onUpdate={getAllTheCategories} />
             ))}
           </Grid>
         </Container>
