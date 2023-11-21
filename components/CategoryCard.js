@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import {
   Card, Grid, CardActions, CardContent, Typography, Button,
 } from '@mui/material';
+import { deleteCateogries } from '../api/categoryData';
 
-export default function CategoryCard({ categoryObj }) {
+export default function CategoryCard({ categoryObj, onUpdate }) {
+  const deleteThisCategory = () => {
+    if (window.confirm(`Delete ${categoryObj.name}? ALL RELATED EXPENSES WILL BE DELETED!!`)) {
+      deleteCateogries(categoryObj.id).then(() => onUpdate());
+    }
+  };
+
   return (
     <Grid item xs={8} sm={6} md={4}>
       <Card
@@ -29,7 +36,9 @@ export default function CategoryCard({ categoryObj }) {
 
 CategoryCard.propTypes = {
   categoryObj: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     spendingLimit: PropTypes.number.isRequired,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
