@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
+  IconButton,
   Card, Grid, CardActions, CardContent, Typography, Button,
 } from '@mui/material';
+
 import { deleteCateogries } from '../api/categoryData';
 
 export default function CategoryCard({ categoryObj, onUpdate }) {
@@ -22,11 +25,13 @@ export default function CategoryCard({ categoryObj, onUpdate }) {
             {categoryObj.name}
           </Typography>
           <Typography>
-            {categoryObj.spendingLimit}
+            ${categoryObj.spendingLimit}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">View</Button>
+          <IconButton aria-label="delete" onClick={deleteThisCategory}>
+            <DeleteIcon />
+          </IconButton>
           <Button size="small">Edit</Button>
         </CardActions>
       </Card>

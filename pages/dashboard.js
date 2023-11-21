@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
 import { getIncome } from '../api/incomeData';
@@ -131,7 +133,9 @@ export default function Dashboard() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
+                    <IconButton aria-label="delete" onClick={() => console.warn('screee')}>
+                      <DeleteIcon />
+                    </IconButton>
                     <Button size="small">Edit</Button>
                   </CardActions>
                 </Card>
