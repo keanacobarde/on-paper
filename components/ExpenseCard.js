@@ -24,7 +24,7 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
             {expenseObj.name}
           </Typography>
           <Typography>
-            ${expenseObj.amount}
+            Amount: ${expenseObj.amount}
           </Typography>
         </CardContent>
         <CardActions>

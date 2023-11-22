@@ -119,11 +119,9 @@ export default function Dashboard() {
             </Stack>
           </Container>
         </Box>
+        {/* End hero unit */}
+        {/* Start of category unit */}
         <Container sx={{ py: 8 }} maxWidth="md">
-
-          {/* End hero unit */}
-
-          {/* Start of category unit */}
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Typography
               component="h1"
