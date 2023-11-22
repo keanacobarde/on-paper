@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import {
-  Box, Container, Typography, Stack, Button,
+  Box, Container, Typography, Stack, Button, Grid,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { getSingleCategory } from '../../api/categoryData';
 import { getExpenses } from '../../api/expenseData';
+import ExpenseCard from '../../components/ExpenseCard';
 
 export default function CategoryDetails() {
   const router = useRouter();
@@ -83,6 +84,28 @@ export default function CategoryDetails() {
           </Stack>
         </Container>
       </Box>
+      <Container sx={{ py: 8 }} maxWidth="md">
+
+        {/* End hero unit */}
+
+        {/* Start of category unit */}
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            Categories
+          </Typography>
+        </Grid>
+        <Grid container spacing={4}>
+          {monthlyExpenses.map((card) => (
+            <ExpenseCard expenseObj={card} onUpdate={getMonthlyExpenses} />
+          ))}
+        </Grid>
+      </Container>
     </main>
   );
 }
