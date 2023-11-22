@@ -111,15 +111,18 @@ function ResponsiveAppBar() {
             OnPaper
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => router.push(`/${page.toLowerCase()}`)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              onClick={() => router.push('/')}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Dashboard
+            </Button>
+            <Button
+              onClick={() => router.push('/timeline')}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Timeline
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
