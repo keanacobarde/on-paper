@@ -62,7 +62,7 @@ const deleteExpense = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SINGLE MEMBER
+// GET SINGLE EXPENSE
 const getSingleExpense = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/expense/${firebaseKey}.json`, {
     method: 'GET',

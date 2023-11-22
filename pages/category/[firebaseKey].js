@@ -19,13 +19,17 @@ export default function CategoryDetails() {
   const [expenses, setExpenses] = useState([]);
 
   const getMonthlyExpenses = () => {
-    getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month).filter((expense) => category.name === expense.category)));
+    getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
   };
 
   useEffect(() => {
     getSingleCategory(firebaseKey).then(setCategory);
     getMonthlyExpenses();
-  }, [firebaseKey]);
+  }, []);
+
+  const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);
+
+  const monthlyExpensesTotal = monthlyExpenses.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
     <main>
@@ -67,7 +71,7 @@ export default function CategoryDetails() {
             >
               Amount Left to Spend:
             </Typography>
-            <div className="money-display"> ${category.spendingLimit - expenses?.reduce((acc, curr) => acc + curr.amount, 0)} </div>
+            <div className="money-display"> ${category.spendingLimit - monthlyExpensesTotal} </div>
           </Stack>
           <Stack
             sx={{ pt: 4 }}
