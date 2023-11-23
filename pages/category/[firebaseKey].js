@@ -12,19 +12,24 @@ import ExpenseCard from '../../components/ExpenseCard';
 export default function CategoryDetails() {
   const router = useRouter();
   const { user } = useAuth();
+  const { firebaseKey } = router.query;
+
   const date = new Date();
   const month = date.toLocaleDateString('default', { month: 'long' });
-  const { firebaseKey } = router.query;
 
   const [category, setCategory] = useState([]);
   const [expenses, setExpenses] = useState([]);
+
+  const getTheSingleExpense = () => {
+    getSingleCategory(firebaseKey).then(setCategory);
+  };
 
   const getMonthlyExpenses = () => {
     getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
   };
 
   useEffect(() => {
-    getSingleCategory(firebaseKey).then(setCategory);
+    getTheSingleExpense();
     getMonthlyExpenses();
   }, []);
 
@@ -81,6 +86,7 @@ export default function CategoryDetails() {
             justifyContent="center"
           >
             <Button variant="contained" color="primary" size="large">ADD AN EXPENSE</Button>
+            <Button variant="contained" color="primary" size="large">Edit Category</Button>
           </Stack>
         </Container>
       </Box>

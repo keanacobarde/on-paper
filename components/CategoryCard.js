@@ -6,7 +6,6 @@ import {
   IconButton,
   Card, Grid, CardActions, CardContent, Typography, Button,
 } from '@mui/material';
-
 import { deleteCateogries } from '../api/categoryData';
 
 export default function CategoryCard({ categoryObj, onUpdate }) {
