@@ -33,12 +33,12 @@ const month = date.toLocaleDateString('default', { month: 'long' });
 export default function Dashboard() {
   const { user } = useAuth();
 
-  const [cards, setCards] = React.useState([]);
+  const [categories, setCategories] = React.useState([]);
   const [income, setIncome] = React.useState([]);
   const [expenses, setExpenses] = React.useState([]);
 
   const getAllTheCategories = () => {
-    getCategories(user.uid).then(setCards);
+    getCategories(user.uid).then(setCategories);
   };
 
   const getMonthlyIncome = () => {
@@ -56,7 +56,7 @@ export default function Dashboard() {
   }, []);
 
   const monthlyIncome = income[0]?.earnings;
-  const categoryTotal = cards?.reduce((acc, curr) => acc + curr.spendingLimit, 0);
+  const categoryTotal = categories?.reduce((acc, curr) => acc + curr.spendingLimit, 0);
   const expenseTotal = expenses?.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
@@ -138,8 +138,8 @@ export default function Dashboard() {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <CategoryCard categoryObj={card} onUpdate={getAllTheCategories} />
+            {categories.map((category) => (
+              <CategoryCard categoryObj={category} onUpdate={getAllTheCategories} />
             ))}
           </Grid>
         </Container>
