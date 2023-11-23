@@ -12,24 +12,19 @@ import ExpenseCard from '../../components/ExpenseCard';
 export default function CategoryDetails() {
   const router = useRouter();
   const { user } = useAuth();
-  const { firebaseKey } = router.query;
-
   const date = new Date();
   const month = date.toLocaleDateString('default', { month: 'long' });
+  const { firebaseKey } = router.query;
 
   const [category, setCategory] = useState([]);
   const [expenses, setExpenses] = useState([]);
-
-  const getTheSingleExpense = () => {
-    getSingleCategory(firebaseKey).then(setCategory);
-  };
 
   const getMonthlyExpenses = () => {
     getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
   };
 
   useEffect(() => {
-    getTheSingleExpense();
+    getSingleCategory(firebaseKey).then(setCategory);
     getMonthlyExpenses();
   }, []);
 
@@ -86,7 +81,6 @@ export default function CategoryDetails() {
             justifyContent="center"
           >
             <Button variant="contained" color="primary" size="large">ADD AN EXPENSE</Button>
-            <Button variant="contained" color="primary" size="large">Edit Category</Button>
           </Stack>
         </Container>
       </Box>
@@ -108,7 +102,7 @@ export default function CategoryDetails() {
         </Grid>
         <Grid container spacing={4}>
           {monthlyExpenses.map((card) => (
-            <ExpenseCard expenseObj={card} onUpdate={getMonthlyExpenses} />
+            <ExpenseCard expenseObj={card} onUpdate={getMonthlyExpenses} key={card.firebaseKey} />
           ))}
         </Grid>
       </Container>
