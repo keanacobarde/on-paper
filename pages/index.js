@@ -139,7 +139,7 @@ export default function Dashboard() {
           </Grid>
           <Grid container spacing={4}>
             {categories.map((category) => (
-              <CategoryCard categoryObj={category} onUpdate={getAllTheCategories} />
+              <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllTheCategories} />
             ))}
           </Grid>
         </Container>
