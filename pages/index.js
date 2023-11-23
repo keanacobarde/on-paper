@@ -55,6 +55,10 @@ export default function Dashboard() {
     getMonthlyExpenses();
   }, []);
 
+  const monthlyIncome = income[0]?.earnings;
+  const categoryTotal = cards?.reduce((acc, curr) => acc + curr.spendingLimit, 0);
+  const expenseTotal = expenses?.reduce((acc, curr) => acc + curr.amount, 0);
+
   return (
     <>
       <CssBaseline />
@@ -87,7 +91,7 @@ export default function Dashboard() {
               >
                 Monthly Earnings:
               </Typography>
-              <div className="money-display"> ${income[0]?.earnings} </div>
+              <div className="money-display"> ${monthlyIncome} </div>
               <Typography
                 component="h1"
                 variant="h6"
@@ -97,7 +101,7 @@ export default function Dashboard() {
               >
                 Amount Left to Spend:
               </Typography>
-              <div className="money-display"> ${income[0]?.earnings - expenses?.reduce((acc, curr) => acc + curr.amount, 0)} </div>
+              <div className="money-display"> ${monthlyIncome - expenseTotal} </div>
               <Typography
                 component="h1"
                 variant="h6"
@@ -107,7 +111,7 @@ export default function Dashboard() {
               >
                 Amount Unallocated:
               </Typography>
-              <div className="money-display"> ${(income[0]?.earnings - cards?.reduce((acc, curr) => acc + curr.spendingLimit, 0)).toFixed(2)} </div>
+              <div className="money-display"> ${(monthlyIncome - categoryTotal).toFixed(2)} </div>
             </Stack>
             <Stack
               sx={{ pt: 4 }}
