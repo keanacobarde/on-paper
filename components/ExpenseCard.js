@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, Card, CardContent, Typography, CardActions, IconButton,
+  Grid, Card, CardContent, Typography, CardActions, IconButton, Stack,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
@@ -20,9 +20,14 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography gutterBottom variant="h5" component="h2">
-            {expenseObj.name}
-          </Typography>
+          <Stack direction="row" spacing={14}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {expenseObj.name}
+            </Typography>
+            <Typography gutterBottom variant="subtitle1">
+              {expenseObj.category}
+            </Typography>
+          </Stack>
           <Typography>
             Amount: ${expenseObj.amount}
           </Typography>
