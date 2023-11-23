@@ -81,6 +81,7 @@ export default function CategoryDetails() {
             justifyContent="center"
           >
             <Button variant="contained" color="primary" size="large">ADD AN EXPENSE</Button>
+            <Button variant="contained" color="primary" size="large">Edit Category</Button>
           </Stack>
         </Container>
       </Box>
