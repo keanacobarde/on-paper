@@ -14,7 +14,7 @@ import { getIncome } from '../api/incomeData';
 import CategoryCard from '../components/CategoryCard';
 import { getExpenses } from '../api/expenseData';
 import Popup from '../components/Popup';
-import CreateCategory from '../components/forms/CreateCategory';
+import Expense from '../components/forms/Expense';
 
 function Copyright() {
   return (
@@ -59,7 +59,7 @@ export default function Dashboard() {
   }, []);
 
   // Setting Component to Pass as Prop - AddAnExpense
-  const createCategoryComponent = <CreateCategory />;
+  const createCategoryComponent = <Expense />;
 
   // Math Functionality
   const monthlyIncome = income[0]?.earnings;

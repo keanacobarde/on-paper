@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
-import { Dialog } from '@mui/material';
+import { Dialog, DialogContent } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 
@@ -23,7 +23,9 @@ export default function Popup({ buttonName, formTitle, formContent }) {
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{formTitle}</DialogTitle>
-        {formContent}
+        <DialogContent>
+          {formContent}
+        </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClose}>Subscribe</Button>
