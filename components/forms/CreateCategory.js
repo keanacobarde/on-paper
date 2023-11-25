@@ -18,7 +18,6 @@ export default function CreateCategory() {
         variant="standard"
       />
       <TextField
-        autoFocus
         margin="dense"
         id="spendingLimit"
         label="Spending Limit"
