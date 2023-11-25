@@ -12,7 +12,7 @@ export default function Expense() {
         autoFocus
         margin="dense"
         id="name"
-        label="Email Address"
+        label="Expense Name"
         type="email"
         fullWidth
         variant="standard"
