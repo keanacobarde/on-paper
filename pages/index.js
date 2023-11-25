@@ -59,7 +59,7 @@ export default function Dashboard() {
   }, []);
 
   // Setting Component to Pass as Prop - AddAnExpense
-  const createCategoryComponent = <Expense />;
+  const createExpenseComponent = <Expense />;
 
   // Math Functionality
   const monthlyIncome = income[0]?.earnings;
@@ -126,7 +126,7 @@ export default function Dashboard() {
               spacing={2}
               justifyContent="center"
             >
-              <Popup buttonName="Add an Expense" formTitle="Add an Expense" formContent={createCategoryComponent} />
+              <Popup buttonName="Add an Expense" formTitle="Add an Expense" formContent={createExpenseComponent} />
             </Stack>
           </Container>
         </Box>

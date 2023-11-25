@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import {
-  Box, Container, Typography, Stack, Button, Grid,
+  Box, Container, Typography, Stack, Grid,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { getSingleCategory } from '../../api/categoryData';
 import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
+import Expense from '../../components/forms/Expense';
+import Popup from '../../components/Popup';
 
 export default function CategoryDetails() {
   const router = useRouter();
@@ -27,6 +29,9 @@ export default function CategoryDetails() {
     getSingleCategory(firebaseKey).then(setCategory);
     getMonthlyExpenses();
   }, []);
+
+  // Setting Component to Pass as Prop - AddAnExpense
+  const createExpenseComponent = <Expense />;
 
   const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);
 
@@ -80,7 +85,7 @@ export default function CategoryDetails() {
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="primary" size="large">ADD AN EXPENSE</Button>
+            <Popup buttonName="Add an Expense" formTitle="Add an Expense" formContent={createExpenseComponent} />
           </Stack>
         </Container>
       </Box>
