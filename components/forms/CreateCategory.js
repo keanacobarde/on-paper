@@ -1,6 +1,8 @@
 import React from 'react';
 import DialogContentText from '@mui/material/DialogContentText';
-import { TextField } from '@mui/material';
+import {
+  TextField, FormControl, InputLabel, FilledInput, InputAdornment,
+} from '@mui/material';
 
 export default function CreateCategory() {
   return (
@@ -16,15 +18,15 @@ export default function CreateCategory() {
         type="string"
         fullWidth
         variant="standard"
+        required
       />
-      <TextField
-        margin="dense"
-        id="spendingLimit"
-        label="Spending Limit"
-        type="float"
-        fullWidth
-        variant="standard"
-      />
+      <FormControl halfWidth sx={{ mt: 1 }} variant="filled">
+        <InputLabel htmlFor="filled-adornment-amount">Spending Limit</InputLabel>
+        <FilledInput
+          id="filled-adornment-amount"
+          startAdornment={<InputAdornment position="start">$</InputAdornment>}
+        />
+      </FormControl>
     </>
   );
 }
