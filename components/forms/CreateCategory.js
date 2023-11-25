@@ -6,14 +6,23 @@ export default function CreateCategory() {
   return (
     <>
       <DialogContentText>
-        Add a Category. This can be anything - from gas money to utility bills to monthly subscriptions. Just make sure you have enough money alloted within your categories for it!
+        Add a Category. Think about the different expenses in your life. From reocurring bills to things you want to save up for. Just make sure every cent is accounted for.
       </DialogContentText>
       <TextField
         autoFocus
         margin="dense"
         id="name"
-        label="Expense Name"
-        type="email"
+        label="Category Name"
+        type="string"
+        fullWidth
+        variant="standard"
+      />
+      <TextField
+        autoFocus
+        margin="dense"
+        id="spendingLimit"
+        label="Spending Limit"
+        type="float"
         fullWidth
         variant="standard"
       />
