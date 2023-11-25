@@ -15,6 +15,7 @@ import CategoryCard from '../components/CategoryCard';
 import { getExpenses } from '../api/expenseData';
 import Popup from '../components/Popup';
 import Expense from '../components/forms/Expense';
+import CreateCategory from '../components/forms/CreateCategory';
 
 function Copyright() {
   return (
@@ -58,8 +59,9 @@ export default function Dashboard() {
     getMonthlyExpenses();
   }, []);
 
-  // Setting Component to Pass as Prop - AddAnExpense
+  // Setting Component to Pass as Prop - AddAnExpense and CreateCategory
   const createExpenseComponent = <Expense />;
+  const createCategoryComponent = <CreateCategory />;
 
   // Math Functionality
   const monthlyIncome = income[0]?.earnings;
@@ -134,15 +136,22 @@ export default function Dashboard() {
         {/* Start of category unit */}
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            <Typography
-              component="h1"
-              variant="h2"
-              align="left"
-              color="text.primary"
-              gutterBottom
+            <Stack
+              sx={{ marginBottom: 5 }}
+              direction="row"
+              spacing={2}
             >
-              Categories
-            </Typography>
+              <Typography
+                component="h1"
+                variant="h2"
+                align="left"
+                color="text.primary"
+                gutterBottom
+              >
+                Categories
+              </Typography>
+              <Popup buttonName="Add a Category" formTitle="Create a Category" formContent={createCategoryComponent} />
+            </Stack>
           </Grid>
           <Grid container spacing={4}>
             {categories.map((category) => (

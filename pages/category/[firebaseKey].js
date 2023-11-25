@@ -30,7 +30,7 @@ export default function CategoryDetails() {
     getMonthlyExpenses();
   }, []);
 
-  // Setting Component to Pass as Prop - AddAnExpense
+  // Setting Component to Pass as Prop - AddAnExpense and AddACategory
   const createExpenseComponent = <Expense />;
 
   const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);

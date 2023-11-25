@@ -6,14 +6,13 @@ export default function CreateCategory() {
   return (
     <>
       <DialogContentText>
-        To subscribe to this website, please enter your email address here. We
-        will send updates occasionally.
+        Add a Category. This can be anything - from gas money to utility bills to monthly subscriptions. Just make sure you have enough money alloted within your categories for it!
       </DialogContentText>
       <TextField
         autoFocus
         margin="dense"
         id="name"
-        label="Email Address"
+        label="Expense Name"
         type="email"
         fullWidth
         variant="standard"
