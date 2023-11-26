@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 import {
   FormControl, InputLabel, FilledInput, InputAdornment, Stack, DialogActions, Button,
 } from '@mui/material';
+import { useRouter } from 'next/router';
+import { useAuth } from '../../utils/context/authContext';
+import { updateCategory, createNewCategory } from '../../api/categoryData';
 
 const initialState = {
   name: '',
-  spendingLimit: 0.00,
+  spendingLimit: '',
 };
 
-export default function CreateCategory({ obj }) {
+export default function CreateCategoryForm({ obj }) {
+  const router = useRouter();
+  const { user } = useAuth();
   const [formInput, setFormInput] = useState(initialState);
+
+  useEffect(() => {
+    if (obj.firebaseKey) setFormInput(obj);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'spendingLimit') { Number(value); }
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
@@ -22,7 +32,15 @@ export default function CreateCategory({ obj }) {
   };
 
   const handleSubmit = () => {
-
+    if (obj.firebaseKey) {
+      updateCategory(formInput).then(() => router.push('/'));
+    } else {
+      const payload = { ...formInput, uid: user.uid };
+      createNewCategory(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateCategory(patchPayload).then(() => router.push('/'));
+      });
+    }
   };
 
   return (
@@ -35,11 +53,13 @@ export default function CreateCategory({ obj }) {
           <InputLabel htmlFor="component-filled">Category Name</InputLabel>
           <FilledInput id="component-filled" name="name" value={formInput.name} onChange={handleChange} />
         </FormControl>
-        <FormControl halfWidth sx={{ mt: 1 }} variant="filled">
+        <FormControl sx={{ mt: 1 }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Spending Limit</InputLabel>
           <FilledInput
             id="filled-adornment-amount"
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            name="spendingLimit"
+            value={formInput.spendingLimit}
           />
         </FormControl>
       </Stack>
@@ -50,7 +70,7 @@ export default function CreateCategory({ obj }) {
   );
 }
 
-CreateCategory.propTypes = {
+CreateCategoryForm.propTypes = {
   obj: PropTypes.shape({
     firebaseKey: PropTypes.string,
     name: PropTypes.string,
@@ -59,6 +79,6 @@ CreateCategory.propTypes = {
   }),
 };
 
-CreateCategory.defaultProps = {
+CreateCategoryForm.defaultProps = {
   obj: initialState,
 };
