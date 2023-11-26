@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { Dialog, DialogContent } from '@mui/material';
-import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Popup({ buttonName, formTitle, formContent }) {
@@ -26,10 +25,6 @@ export default function Popup({ buttonName, formTitle, formContent }) {
         <DialogContent>
           {formContent}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Close</Button>
-          <Button onClick={handleClose}>Submit</Button>
-        </DialogActions>
       </Dialog>
     </>
   );
