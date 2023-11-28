@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -10,7 +11,7 @@ import { updateCategory, createNewCategory } from '../../api/categoryData';
 
 const initialState = {
   name: '',
-  spendingLimit: '',
+  spendingLimit: 0,
 };
 
 export default function CreateCategoryForm({ obj }) {
@@ -23,8 +24,8 @@ export default function CreateCategoryForm({ obj }) {
   }, [obj]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'spendingLimit') { Number(value); }
+    var { name, value } = e.target;
+    if (name === 'spendingLimit') { value = Number(value); }
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
@@ -36,9 +37,12 @@ export default function CreateCategoryForm({ obj }) {
       updateCategory(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
+      console.warn(payload);
       createNewCategory(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateCategory(patchPayload).then(() => router.push('/'));
+        updateCategory(patchPayload).then(() => {
+          router.push('/');
+        });
       });
     }
   };
@@ -60,6 +64,7 @@ export default function CreateCategoryForm({ obj }) {
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
             name="spendingLimit"
             value={formInput.spendingLimit}
+            onChange={handleChange}
           />
         </FormControl>
       </Stack>
