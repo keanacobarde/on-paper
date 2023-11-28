@@ -36,7 +36,7 @@ export default function CreateCategoryForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateCategory(formInput).then(() => router.push('/'));
+      updateCategory(formInput).then(() => router.push(`/category/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       console.warn(payload);
