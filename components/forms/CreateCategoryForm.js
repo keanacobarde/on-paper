@@ -24,6 +24,7 @@ export default function CreateCategoryForm({ obj }) {
   }, [obj]);
 
   const handleChange = (e) => {
+  // usage of var is necessary due to linter restrictions on the reassigning of const and let within destructured variables.
     var { name, value } = e.target;
     if (name === 'spendingLimit') { value = Number(value); }
     setFormInput((prevState) => ({
