@@ -39,7 +39,6 @@ export default function CreateCategoryForm({ obj }) {
       updateCategory(formInput).then(() => router.push(`/category/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      console.warn(payload);
       createNewCategory(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCategory(patchPayload).then(() => {
@@ -66,6 +65,7 @@ export default function CreateCategoryForm({ obj }) {
               id="filled-adornment-amount"
               startAdornment={<InputAdornment position="start">$</InputAdornment>}
               name="spendingLimit"
+              placeholder="0.00"
               value={formInput.spendingLimit}
               onChange={handleChange}
             />
