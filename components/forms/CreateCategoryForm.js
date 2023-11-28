@@ -33,7 +33,8 @@ export default function CreateCategoryForm({ obj }) {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (obj.firebaseKey) {
       updateCategory(formInput).then(() => router.push('/'));
     } else {
@@ -42,7 +43,7 @@ export default function CreateCategoryForm({ obj }) {
       createNewCategory(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCategory(patchPayload).then(() => {
-          router.push('/');
+          router.push(`category/${patchPayload.firebaseKey}`);
         });
       });
     }
@@ -50,28 +51,30 @@ export default function CreateCategoryForm({ obj }) {
 
   return (
     <>
-      <Stack spacing={2}>
-        <DialogContentText>
-          Add a Category. Think about the different expenses in your life. From reocurring bills to things you want to save up for. Just make sure every cent is accounted for.
-        </DialogContentText>
-        <FormControl variant="filled">
-          <InputLabel htmlFor="component-filled">Category Name</InputLabel>
-          <FilledInput id="component-filled" name="name" value={formInput.name} onChange={handleChange} />
-        </FormControl>
-        <FormControl sx={{ mt: 1 }} variant="filled">
-          <InputLabel htmlFor="filled-adornment-amount">Spending Limit</InputLabel>
-          <FilledInput
-            id="filled-adornment-amount"
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            name="spendingLimit"
-            value={formInput.spendingLimit}
-            onChange={handleChange}
-          />
-        </FormControl>
-      </Stack>
-      <DialogActions>
-        <Button onClick={handleSubmit}>Submit</Button>
-      </DialogActions>
+      <form onSubmit={handleSubmit}>
+        <Stack spacing={2}>
+          <DialogContentText>
+            Add a Category. Think about the different expenses in your life. From reocurring bills to things you want to save up for. Just make sure every cent is accounted for.
+          </DialogContentText>
+          <FormControl variant="filled">
+            <InputLabel htmlFor="component-filled">Category Name</InputLabel>
+            <FilledInput id="component-filled" name="name" value={formInput.name} onChange={handleChange} />
+          </FormControl>
+          <FormControl sx={{ mt: 1 }} variant="filled">
+            <InputLabel htmlFor="filled-adornment-amount">Spending Limit</InputLabel>
+            <FilledInput
+              id="filled-adornment-amount"
+              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              name="spendingLimit"
+              value={formInput.spendingLimit}
+              onChange={handleChange}
+            />
+          </FormControl>
+        </Stack>
+        <DialogActions>
+          <Button type="submit">Submit</Button>
+        </DialogActions>
+      </form>
     </>
   );
 }
