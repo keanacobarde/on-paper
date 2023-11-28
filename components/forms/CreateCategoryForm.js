@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 import {
-  FormControl, InputLabel, FilledInput, InputAdornment, Stack, DialogActions, Button,
+  FormControl, Stack, DialogActions, Button, TextField,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
@@ -11,7 +11,7 @@ import { updateCategory, createNewCategory } from '../../api/categoryData';
 
 const initialState = {
   name: '',
-  spendingLimit: 0,
+  spendingLimit: 0.00,
 };
 
 export default function CreateCategoryForm({ obj }) {
@@ -24,13 +24,24 @@ export default function CreateCategoryForm({ obj }) {
   }, [obj]);
 
   const handleChange = (e) => {
-  // usage of var is necessary due to linter restrictions on the reassigning of const and let within destructured variables.
-    var { name, value } = e.target;
-    if (name === 'spendingLimit') { value = Number(value); }
-    setFormInput((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    const { name, value } = e.target;
+    // checking if the name value is assigned to the name to determine handling
+    if (name === 'name') {
+      setFormInput((prevState) => ({
+        ...prevState,
+        name: value,
+      }));
+    }
+
+    // checking if the name value is assigned to spendingLimit
+    if (name === 'spendingLimit') {
+      const parsedSpendingLimit = parseFloat(value) ? parseFloat(value) : 0.00;
+      console.warn(parsedSpendingLimit);
+      setFormInput((prevState) => ({
+        ...prevState,
+        spendingLimit: parsedSpendingLimit,
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -56,16 +67,26 @@ export default function CreateCategoryForm({ obj }) {
             Add a Category. Think about the different expenses in your life. From reocurring bills to things you want to save up for. Just make sure every cent is accounted for.
           </DialogContentText>
           <FormControl variant="filled">
-            <InputLabel htmlFor="component-filled">Category Name</InputLabel>
-            <FilledInput id="component-filled" name="name" value={formInput.name} onChange={handleChange} />
-          </FormControl>
-          <FormControl sx={{ mt: 1 }} variant="filled">
-            <InputLabel htmlFor="filled-adornment-amount">Spending Limit</InputLabel>
-            <FilledInput
-              id="filled-adornment-amount"
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              name="name"
+              label="Category Name"
+              type="text"
+              fullWidth
+              variant="standard"
+              value={formInput.name}
+              onChange={handleChange}
+            />
+            <TextField
+              helperText="Only accepts numbers and decimals."
+              margin="dense"
+              id="name"
               name="spendingLimit"
-              placeholder="0.00"
+              label="Spending Limit"
+              fullWidth
+              variant="standard"
               value={formInput.spendingLimit}
               onChange={handleChange}
             />
