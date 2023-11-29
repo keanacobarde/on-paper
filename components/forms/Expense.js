@@ -1,14 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 import {
-  TextField, MenuItem, Stack,
+  TextField, MenuItem, Stack, DialogActions, Button,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useAuth } from '../../utils/context/authContext';
+import { getCategories } from '../../api/categoryData';
 
 const initialState = {
   name: '',
@@ -21,10 +23,12 @@ export default function Expense({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
   const [formInput, setFormInput] = useState(initialState);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj]);
+    getCategories(user.uid).then(setCategories);
+  }, [obj, categories]);
 
   console.warn(user, router.query, formInput);
 
@@ -62,17 +66,18 @@ export default function Expense({ obj }) {
             type="text"
             fullWidth
             variant="standard"
-            label="Select Category"
+            label={formInput.category}
             select
           >
-            <MenuItem value=""> Category </MenuItem>
-            <MenuItem value=""> Category </MenuItem>
-            <MenuItem value=""> Category </MenuItem>
+            {categories.map((category) => <MenuItem value={category.name}> {category.name} </MenuItem>)}
           </TextField>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker />
           </LocalizationProvider>
         </Stack>
+        <DialogActions sx={{ mt: 0.45 }}>
+          <Button type="submit">Submit</Button>
+        </DialogActions>
       </form>
     </>
   );
