@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 import {
-  TextField,
+  TextField, MenuItem, Stack,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
@@ -48,6 +48,21 @@ export default function Expense({ obj }) {
           fullWidth
           variant="standard"
         />
+        <Stack>
+          <TextField
+            margin="dense"
+            id="name"
+            type="text"
+            fullWidth
+            variant="standard"
+            label="Select Category"
+            select
+          >
+            <MenuItem value=""> Category </MenuItem>
+            <MenuItem value=""> Category </MenuItem>
+            <MenuItem value=""> Category </MenuItem>
+          </TextField>
+        </Stack>
       </form>
     </>
   );
