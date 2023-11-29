@@ -1,4 +1,3 @@
-/* eslint-disable no-var */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -11,7 +10,7 @@ import { updateCategory, createNewCategory } from '../../api/categoryData';
 
 const initialState = {
   name: '',
-  spendingLimit: 0.00,
+  spendingLimit: '0.00',
 };
 
 export default function CreateCategoryForm({ obj }) {
@@ -25,23 +24,10 @@ export default function CreateCategoryForm({ obj }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // checking if the name value is assigned to the name to determine handling
-    if (name === 'name') {
-      setFormInput((prevState) => ({
-        ...prevState,
-        name: value,
-      }));
-    }
-
-    // checking if the name value is assigned to spendingLimit
-    if (name === 'spendingLimit') {
-      const parsedSpendingLimit = parseFloat(value) ? parseFloat(value) : 0.00;
-      console.warn(parsedSpendingLimit);
-      setFormInput((prevState) => ({
-        ...prevState,
-        spendingLimit: parsedSpendingLimit,
-      }));
-    }
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -49,11 +35,12 @@ export default function CreateCategoryForm({ obj }) {
     if (obj.firebaseKey) {
       updateCategory(formInput).then(() => router.push(`/category/${obj.firebaseKey}`));
     } else {
+      formInput.spendingLimit = parseFloat(formInput.spendingLimit);
       const payload = { ...formInput, uid: user.uid };
       createNewCategory(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCategory(patchPayload).then(() => {
-          router.push(`category/${patchPayload.firebaseKey}`);
+          router.push(`/category/${patchPayload.firebaseKey}`);
         });
       });
     }
@@ -86,6 +73,7 @@ export default function CreateCategoryForm({ obj }) {
               name="spendingLimit"
               label="Spending Limit"
               fullWidth
+              type="text"
               variant="standard"
               value={formInput.spendingLimit}
               onChange={handleChange}
@@ -104,7 +92,7 @@ CreateCategoryForm.propTypes = {
   obj: PropTypes.shape({
     firebaseKey: PropTypes.string,
     name: PropTypes.string,
-    spendingLimit: PropTypes.number,
+    spendingLimit: PropTypes.string,
     userid: PropTypes.string,
   }),
 };
