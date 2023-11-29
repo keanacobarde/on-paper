@@ -5,6 +5,9 @@ import {
   TextField, MenuItem, Stack,
 } from '@mui/material';
 import { useRouter } from 'next/router';
+import { DatePicker } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
@@ -48,7 +51,11 @@ export default function Expense({ obj }) {
           fullWidth
           variant="standard"
         />
-        <Stack>
+        <Stack
+          sx={{ mt: 2 }}
+          direction="row"
+          spacing={2}
+        >
           <TextField
             margin="dense"
             id="name"
@@ -62,6 +69,9 @@ export default function Expense({ obj }) {
             <MenuItem value=""> Category </MenuItem>
             <MenuItem value=""> Category </MenuItem>
           </TextField>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker />
+          </LocalizationProvider>
         </Stack>
       </form>
     </>
