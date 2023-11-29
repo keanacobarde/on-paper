@@ -10,6 +10,7 @@ import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
 import Expense from '../../components/forms/Expense';
 import Popup from '../../components/Popup';
+import CreateCategoryForm from '../../components/forms/CreateCategoryForm';
 
 export default function CategoryDetails() {
   const router = useRouter();
@@ -32,6 +33,7 @@ export default function CategoryDetails() {
 
   // Setting Component to Pass as Prop - AddAnExpense and AddACategory
   const createExpenseComponent = <Expense />;
+  const editCategoryComponent = <CreateCategoryForm obj={category} />;
 
   const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);
 
@@ -86,6 +88,7 @@ export default function CategoryDetails() {
             justifyContent="center"
           >
             <Popup buttonName="Add an Expense" formTitle="Add an Expense" formContent={createExpenseComponent} />
+            <Popup buttonName="Edit Category" formTitle="Edit a Category" formContent={editCategoryComponent} />
           </Stack>
         </Container>
       </Box>
@@ -102,7 +105,7 @@ export default function CategoryDetails() {
             color="text.primary"
             gutterBottom
           >
-            Categories
+            Expenses
           </Typography>
         </Grid>
         <Grid container spacing={4}>

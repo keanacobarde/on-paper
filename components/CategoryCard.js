@@ -27,7 +27,7 @@ export default function CategoryCard({ categoryObj, onUpdate }) {
             {categoryObj.name}
           </Typography>
           <Typography>
-            Spending Limit: ${categoryObj.spendingLimit}
+            Spending Limit: ${categoryObj.spendingLimit.toFixed(2)}
           </Typography>
         </CardContent>
         <CardActions>
