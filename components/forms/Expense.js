@@ -11,7 +11,7 @@ const initialState = {
   name: '',
   amount: '',
   month: '',
-  category: '',
+  category: 'Category',
 };
 
 export default function Expense({ obj }) {
