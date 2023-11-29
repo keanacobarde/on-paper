@@ -104,7 +104,9 @@ export default function Expense({ obj }) {
             {categories.map((category) => <MenuItem value={category.name}> {category.name} </MenuItem>)}
           </TextField>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker />
+            <DatePicker
+              value={formInput.month.length !== 0 ? formInput.month : null}
+            />
           </LocalizationProvider>
         </Stack>
         <DialogActions sx={{ mt: 0.45 }}>
