@@ -24,7 +24,6 @@ export default function CreateCategoryForm({ obj }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // checking if the name value is assigned to the name to determine handling
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
