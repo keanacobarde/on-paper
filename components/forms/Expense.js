@@ -11,6 +11,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useAuth } from '../../utils/context/authContext';
 import { getCategories } from '../../api/categoryData';
+import { createNewExpense, updateExpense } from '../../api/expenseData';
 
 const initialState = {
   name: '',
@@ -30,11 +31,34 @@ export default function Expense({ obj }) {
     getCategories(user.uid).then(setCategories);
   }, [obj, categories]);
 
-  console.warn(user, router.query, formInput);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (obj.firebaseKey) {
+      formInput.amount = parseFloat(formInput.amount);
+      updateExpense(formInput).then(() => router.push('/'));
+    } else {
+      formInput.spendingLimit = parseFloat(formInput.spendingLimit);
+      const payload = { ...formInput, uid: user.uid };
+      createNewExpense(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateExpense(patchPayload).then(() => {
+          router.push(`/category/${patchPayload.firebaseKey}`);
+        });
+      });
+    }
+  };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <DialogContentText>
           Add an Expense. This can be anything - from gas money to utility bills to monthly subscriptions. Just make sure you have enough money alloted within your categories for it!
         </DialogContentText>
@@ -42,18 +66,24 @@ export default function Expense({ obj }) {
           autoFocus
           margin="dense"
           id="name"
+          name="name"
           label="Expense Name"
           type="text"
           fullWidth
           variant="standard"
+          value={formInput.name}
+          onChange={handleChange}
         />
         <TextField
           margin="dense"
           id="name"
+          name="amount"
           label="Amount"
           type="text"
           fullWidth
           variant="standard"
+          value={formInput.amount}
+          onChange={handleChange}
         />
         <Stack
           sx={{ mt: 2 }}
@@ -64,9 +94,11 @@ export default function Expense({ obj }) {
             margin="dense"
             id="name"
             type="text"
+            name="category"
             fullWidth
             variant="standard"
-            label={formInput.category}
+            label="Category"
+            onChange={handleChange}
             select
           >
             {categories.map((category) => <MenuItem value={category.name}> {category.name} </MenuItem>)}
