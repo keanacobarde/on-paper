@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 import {
-  TextField, Label,
+  TextField,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
@@ -27,29 +27,28 @@ export default function Expense({ obj }) {
 
   return (
     <>
-      <DialogContentText>
-        Add an Expense. This can be anything - from gas money to utility bills to monthly subscriptions. Just make sure you have enough money alloted within your categories for it!
-      </DialogContentText>
-      <TextField
-        autoFocus
-        margin="dense"
-        id="name"
-        label="Expense Name"
-        type="text"
-        fullWidth
-        variant="standard"
-      />
-      <TextField
-        margin="dense"
-        id="name"
-        label="Amount"
-        type="text"
-        fullWidth
-        variant="standard"
-      />
-      <Label htmlFor="named-select">
-        With the <code>name</code> prop
-      </Label>
+      <form>
+        <DialogContentText>
+          Add an Expense. This can be anything - from gas money to utility bills to monthly subscriptions. Just make sure you have enough money alloted within your categories for it!
+        </DialogContentText>
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Expense Name"
+          type="text"
+          fullWidth
+          variant="standard"
+        />
+        <TextField
+          margin="dense"
+          id="name"
+          label="Amount"
+          type="text"
+          fullWidth
+          variant="standard"
+        />
+      </form>
     </>
   );
 }
