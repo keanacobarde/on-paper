@@ -62,7 +62,7 @@ const deleteCateogries = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SINGLE MEMBER
+// GET SINGLE Category
 const getSingleCategory = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/category/${firebaseKey}.json`, {
     method: 'GET',
@@ -75,10 +75,23 @@ const getSingleCategory = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getCategoryByName = (categoryName) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/category.json?orderBy="name"&equalTo="${categoryName}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   createNewCategory,
   getCategories,
   deleteCateogries,
   updateCategory,
   getSingleCategory,
+  getCategoryByName,
 };

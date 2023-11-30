@@ -4,8 +4,9 @@ import {
   Grid, Card, CardContent, Typography, CardActions, IconButton, Stack,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditNoteIcon from '@mui/icons-material/EditNote';
 import { deleteExpense } from '../api/expenseData';
+import Popup from './Popup';
+import Expense from './forms/Expense';
 
 export default function ExpenseCard({ expenseObj, onUpdate }) {
   const deleteThisExpense = () => {
@@ -13,6 +14,9 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
       deleteExpense(expenseObj.firebaseKey).then(() => onUpdate());
     }
   };
+
+  // Setting Component to Pass as Prop - Edit an Expense
+  const createExpenseComponent = <Expense obj={expenseObj} />;
 
   return (
     <Grid item xs={8} sm={6} md={4}>
@@ -36,9 +40,7 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
           <IconButton aria-label="delete" onClick={deleteThisExpense}>
             <DeleteIcon />
           </IconButton>
-          <IconButton aria-label="edit" onClick={console.warn('edit expense')}>
-            <EditNoteIcon />
-          </IconButton>
+          <Popup buttonType="edit" formTitle="Edit Expense" formContent={createExpenseComponent} />
         </CardActions>
       </Card>
     </Grid>
