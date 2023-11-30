@@ -8,7 +8,7 @@ import {
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { getCategories } from '../../api/categoryData';
-import { updateExpense } from '../../api/expenseData';
+import { createNewExpense, updateExpense } from '../../api/expenseData';
 
 const date = new Date();
 const monthValue = date.toLocaleDateString('default', { month: 'long' });
@@ -51,7 +51,12 @@ export default function Expense({ obj }) {
     } else {
       formInput.amount = parseFloat(formInput.amount);
       const payload = { ...formInput, uid: user.uid };
-      console.warn(payload, typeof payload.amount);
+      createNewExpense(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateExpense(patchPayload).then(() => {
+          router.push('/');
+        });
+      });
     }
   };
 
