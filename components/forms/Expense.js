@@ -103,7 +103,7 @@ export default function Expense({ obj }) {
             name="category"
             fullWidth
             variant="standard"
-            label="Category"
+            label={obj.firebaseKey ? `${obj.category}` : 'Category'}
             value={formInput.category}
             onChange={handleChange}
             select
@@ -142,7 +142,7 @@ Expense.propTypes = {
     name: PropTypes.string,
     amount: PropTypes.string,
     month: PropTypes.string,
-    categeory: PropTypes.string,
+    category: PropTypes.string,
     userid: PropTypes.string,
   }),
 };
