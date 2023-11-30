@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
-import { getCategories } from '../../api/categoryData';
+import { getCategories, getCategoryByName } from '../../api/categoryData';
 import { createNewExpense, updateExpense } from '../../api/expenseData';
 
 const date = new Date();
@@ -47,14 +47,16 @@ export default function Expense({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       formInput.amount = parseFloat(formInput.amount);
-      updateExpense(formInput).then(() => router.push('/'));
+      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then((res) => router.push(`/category/${res[0].firebaseKey}`)));
     } else {
       formInput.amount = parseFloat(formInput.amount);
       const payload = { ...formInput, uid: user.uid };
       createNewExpense(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateExpense(patchPayload).then(() => {
-          router.push('/');
+          getCategoryByName(formInput.category).then((res) => {
+            router.push(`/category/${res[0].firebaseKey}`);
+          });
         });
       });
     }
