@@ -6,18 +6,18 @@ import {
   TextField, MenuItem, Stack, DialogActions, Button,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { DatePicker } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useAuth } from '../../utils/context/authContext';
 import { getCategories } from '../../api/categoryData';
-import { createNewExpense, updateExpense } from '../../api/expenseData';
+import { updateExpense } from '../../api/expenseData';
+
+const date = new Date();
+const monthValue = date.toLocaleDateString('default', { month: 'long' });
 
 const initialState = {
   name: '',
   amount: '',
-  month: '',
-  category: 'Category',
+  month: monthValue,
+  category: '',
 };
 
 export default function Expense({ obj }) {
@@ -25,6 +25,10 @@ export default function Expense({ obj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState(initialState);
   const [categories, setCategories] = useState([]);
+  const monthsArray = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
+  ];
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
@@ -45,14 +49,9 @@ export default function Expense({ obj }) {
       formInput.amount = parseFloat(formInput.amount);
       updateExpense(formInput).then(() => router.push('/'));
     } else {
-      formInput.spendingLimit = parseFloat(formInput.spendingLimit);
+      formInput.amount = parseFloat(formInput.amount);
       const payload = { ...formInput, uid: user.uid };
-      createNewExpense(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateExpense(patchPayload).then(() => {
-          router.push(`/category/${patchPayload.firebaseKey}`);
-        });
-      });
+      console.warn(payload, typeof payload.amount);
     }
   };
 
@@ -98,16 +97,29 @@ export default function Expense({ obj }) {
             fullWidth
             variant="standard"
             label="Category"
+            value={formInput.category}
             onChange={handleChange}
             select
           >
-            {categories.map((category) => <MenuItem value={category.name}> {category.name} </MenuItem>)}
+            {categories.map((category) => <MenuItem key={category.firebaseKey} value={category.name}> {category.name} </MenuItem>)}
           </TextField>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              value={formInput.month.length !== 0 ? formInput.month : null}
-            />
-          </LocalizationProvider>
+          <TextField
+            margin="dense"
+            id="name"
+            type="text"
+            name="month"
+            fullWidth
+            variant="standard"
+            label="Month"
+            value={formInput.month}
+            onChange={handleChange}
+            select
+          >
+            {monthsArray.map((month) => (
+              <MenuItem key={month} value={month}> {month}
+              </MenuItem>
+            ))}
+          </TextField>
         </Stack>
         <DialogActions sx={{ mt: 0.45 }}>
           <Button type="submit">Submit</Button>
