@@ -8,8 +8,10 @@ export default function timeline() {
   ];
 
   return (
-    <Stack sx={{ mt: 4 }} spacing={2} direction="row">
-      {monthsArray.map((month) => <Button variant="outlined">{month}</Button>)}
-    </Stack>
+    <main>
+      <Stack sx={{ mt: 4 }} spacing={2} direction="row">
+        {monthsArray.map((month) => <Button key={month} variant="contained">{month}</Button>)}
+      </Stack>
+    </main>
   );
 }
