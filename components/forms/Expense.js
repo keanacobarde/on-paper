@@ -32,8 +32,9 @@ export default function Expense({ obj }) {
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
+
     getCategories(user.uid).then(setCategories);
-  }, [obj, categories]);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
