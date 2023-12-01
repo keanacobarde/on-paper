@@ -3,7 +3,7 @@ import {
   Box, Container, Typography, Stack, Grid,
 } from '@mui/material';
 
-export default function Timeline() {
+export default function Month() {
   return (
     <main>
       {/* Hero unit */}
