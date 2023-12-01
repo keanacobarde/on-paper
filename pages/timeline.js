@@ -1,4 +1,4 @@
-import { Stack, Button } from '@mui/material';
+import { Stack, Button, Grid } from '@mui/material';
 import React from 'react';
 
 export default function timeline() {
@@ -9,9 +9,11 @@ export default function timeline() {
 
   return (
     <main>
-      <Stack sx={{ mt: 4 }} spacing={2} direction="row">
-        {monthsArray.map((month) => <Button key={month} variant="contained">{month}</Button>)}
-      </Stack>
+      <Grid align="center">
+        <Stack sx={{ mt: 4 }} spacing={2} direction="row" justifyContent="center">
+          {monthsArray.map((month) => <Button key={month} variant="contained">{month}</Button>)}
+        </Stack>
+      </Grid>
     </main>
   );
 }
