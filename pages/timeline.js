@@ -1,5 +1,5 @@
-import { Stack, Button, Grid } from '@mui/material';
 import React from 'react';
+import { Stack, Button, Grid } from '@mui/material';
 
 export default function timeline() {
   const monthsArray = [
