@@ -48,7 +48,7 @@ export default function Expense({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       formInput.amount = parseFloat(formInput.amount);
-      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then((res) => router.push(`/category/${res[0].firebaseKey}`)));
+      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then(() => router.push('/')));
     } else {
       formInput.amount = parseFloat(formInput.amount);
       const payload = { ...formInput, uid: user.uid };
