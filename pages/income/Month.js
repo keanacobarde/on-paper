@@ -56,7 +56,7 @@ export default function Month() {
 
         {/* End hero unit */}
 
-        {/* Start of category unit */}
+        {/* Start of expense unit */}
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Typography
             component="h1"
