@@ -45,8 +45,8 @@ export default function MonthlyIncome({ obj }) {
           autoFocus
           margin="dense"
           id="name"
-          name="name"
-          label="Expense Name"
+          name="month"
+          label="Month"
           type="text"
           fullWidth
           variant="standard"
@@ -56,8 +56,8 @@ export default function MonthlyIncome({ obj }) {
         <TextField
           margin="dense"
           id="name"
-          name="amount"
-          label="Amount"
+          name="earnings"
+          label="Income"
           type="text"
           fullWidth
           variant="standard"
