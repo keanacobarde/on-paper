@@ -61,7 +61,7 @@ export default function MonthlyIncome({ obj }) {
           type="text"
           fullWidth
           variant="standard"
-          value={formInput.amount}
+          value={formInput.earnings}
           onChange={handleChange}
         />
         <DialogActions sx={{ mt: 0.45 }}>
