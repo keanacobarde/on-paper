@@ -95,7 +95,18 @@ export default function Month({ obj }) {
           </Typography>
         </Grid>
         <Grid container spacing={4}>
-          {expenses.map((expense) => <ExpenseCard expenseObj={expense} onUpdate={getMonthlyExpenses} key={expense.firebaseKey} />)}
+          {expenses.length ? expenses.map((expense) => <ExpenseCard expenseObj={expense} onUpdate={getMonthlyExpenses} key={expense.firebaseKey} />) : (
+            <Typography
+              sx={{ mt: 2 }}
+              component="h1"
+              variant="h6"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+              Hmm...no expenses found - create some!
+            </Typography>
+          ) }
         </Grid>
       </Container>
     </>
