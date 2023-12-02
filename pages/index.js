@@ -13,7 +13,7 @@ import { getIncome } from '../api/incomeData';
 import CategoryCard from '../components/CategoryCard';
 import { getExpenses } from '../api/expenseData';
 import Popup from '../components/Popup';
-import CreateCategoryForm from '../components/forms/CreateCategoryForm';
+import CategoryForm from '../components/forms/CategoryForm';
 import Footer from '../components/Footer';
 import ExpenseForm from '../components/forms/ExpenseForm';
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
   // Setting Component to Pass as Prop - AddAnExpense and CreateCategory
   const createExpenseComponent = <ExpenseForm />;
-  const createCategoryComponent = <CreateCategoryForm />;
+  const createCategoryComponent = <CategoryForm />;
 
   // Math Functionality
   const monthlyIncome = income[0]?.earnings;

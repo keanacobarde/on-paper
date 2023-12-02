@@ -9,7 +9,7 @@ import { getSingleCategory } from '../../api/categoryData';
 import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
 import Popup from '../../components/Popup';
-import CreateCategoryForm from '../../components/forms/CreateCategoryForm';
+import CategoryForm from '../../components/forms/CategoryForm';
 import ExpenseForm from '../../components/forms/ExpenseForm';
 
 export default function CategoryDetails() {
@@ -33,7 +33,7 @@ export default function CategoryDetails() {
 
   // Setting Component to Pass as Prop - AddAnExpense and AddACategory
   const createExpenseComponent = <ExpenseForm />;
-  const editCategoryComponent = <CreateCategoryForm obj={category} />;
+  const editCategoryComponent = <CategoryForm obj={category} />;
 
   const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);
 

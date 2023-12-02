@@ -13,7 +13,7 @@ const initialState = {
   spendingLimit: '0.00',
 };
 
-export default function CreateCategoryForm({ obj }) {
+export default function CategoryForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
   const [formInput, setFormInput] = useState(initialState);
@@ -89,7 +89,7 @@ export default function CreateCategoryForm({ obj }) {
   );
 }
 
-CreateCategoryForm.propTypes = {
+CategoryForm.propTypes = {
   obj: PropTypes.shape({
     firebaseKey: PropTypes.string,
     name: PropTypes.string,
@@ -98,6 +98,6 @@ CreateCategoryForm.propTypes = {
   }),
 };
 
-CreateCategoryForm.defaultProps = {
+CategoryForm.defaultProps = {
   obj: initialState,
 };
