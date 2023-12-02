@@ -100,7 +100,7 @@ export default function Dashboard() {
               >
                 Monthly Earnings:
               </Typography>
-              <div className="money-display"> ${monthlyIncome} </div>
+              <div className="money-display"> ${monthlyIncome?.toFixed(2)} </div>
               <Typography
                 component="h1"
                 variant="h6"
@@ -110,7 +110,7 @@ export default function Dashboard() {
               >
                 Amount Left to Spend:
               </Typography>
-              <div className="money-display"> ${monthlyIncome - expenseTotal} </div>
+              <div className="money-display"> ${(monthlyIncome - expenseTotal).toFixed(2)} </div>
               <Typography
                 component="h1"
                 variant="h6"

@@ -24,7 +24,7 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          <Stack direction="row" spacing={14}>
+          <Stack direction="column" spacing={0.5}>
             <Typography gutterBottom variant="h5" component="h2">
               {expenseObj.name}
             </Typography>
