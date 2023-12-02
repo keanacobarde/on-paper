@@ -5,6 +5,7 @@ import {
   Box, Container, Typography, Stack, Grid,
 } from '@mui/material';
 import { getExpenses } from '../../api/expenseData';
+import ExpenseCard from '../../components/ExpenseCard';
 
 export default function Month({ obj }) {
   const [expenses, setExpenses] = useState([]);
@@ -36,7 +37,9 @@ export default function Month({ obj }) {
             align="center"
             color="text.primary"
             gutterBottom
-          />
+          >
+            {obj.month}
+          </Typography>
           <Stack spacing={2} direction="column" alignItems="center">
             <Typography
               component="h1"
@@ -83,7 +86,9 @@ export default function Month({ obj }) {
             Expenses
           </Typography>
         </Grid>
-        <Grid container spacing={4} />
+        <Grid container spacing={4}>
+          {expenses.map((expense) => <ExpenseCard expenseObj={expense} onUpdate={getMonthlyExpenses} key={expense.firebaseKey} />)}
+        </Grid>
       </Container>
     </>
   );
