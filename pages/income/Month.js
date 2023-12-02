@@ -11,14 +11,15 @@ export default function Month({ obj }) {
   const [expenses, setExpenses] = useState([]);
 
   const getMonthlyExpenses = () => {
-    getExpenses(obj.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === obj.month)));
+    getExpenses(obj.uid).then((res) => setExpenses(res.filter((expense) => expense.month === obj.month)));
   };
 
   const monthlyExpensesTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
 
   useEffect(() => {
     getMonthlyExpenses();
-  }, []);
+    console.warn(obj);
+  }, [obj.month]);
 
   return (
     <>
@@ -50,7 +51,7 @@ export default function Month({ obj }) {
             >
               Spending Limit
             </Typography>
-            <div className="money-display"> ${obj.earnings} </div>
+            <div className="money-display"> ${obj.earnings?.toFixed(2)} </div>
             <Typography
               component="h1"
               variant="h6"
@@ -60,7 +61,7 @@ export default function Month({ obj }) {
             >
               Amount Left to Spend:
             </Typography>
-            <div className="money-display"> ${obj.earnings - monthlyExpensesTotal} </div>
+            <div className="money-display"> ${(obj.earnings - monthlyExpensesTotal).toFixed(2)} </div>
           </Stack>
           <Stack
             sx={{ pt: 4 }}
