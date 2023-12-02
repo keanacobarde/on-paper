@@ -7,27 +7,15 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
 import { getIncome } from '../api/incomeData';
 import CategoryCard from '../components/CategoryCard';
 import { getExpenses } from '../api/expenseData';
 import Popup from '../components/Popup';
-import Expense from '../components/forms/Expense';
-import CreateCategoryForm from '../components/forms/CreateCategoryForm';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/keanacobarde">
-        OnPaper
-      </Link>{' '}
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
+import CategoryForm from '../components/forms/CategoryForm';
+import Footer from '../components/Footer';
+import ExpenseForm from '../components/forms/ExpenseForm';
 
 const date = new Date();
 const month = date.toLocaleDateString('default', { month: 'long' });
@@ -60,8 +48,8 @@ export default function Dashboard() {
   }, []);
 
   // Setting Component to Pass as Prop - AddAnExpense and CreateCategory
-  const createExpenseComponent = <Expense />;
-  const createCategoryComponent = <CreateCategoryForm />;
+  const createExpenseComponent = <ExpenseForm />;
+  const createCategoryComponent = <CategoryForm />;
 
   // Math Functionality
   const monthlyIncome = income[0]?.earnings;
@@ -154,29 +142,24 @@ export default function Dashboard() {
             </Stack>
           </Grid>
           <Grid container spacing={4}>
-            {categories.map((category) => (
+            {categories.length ? categories.map((category) => (
               <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllTheCategories} />
-            ))}
+            )) : (
+              <Typography
+                sx={{ mt: 2 }}
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Hmm...no categories found - create some!
+              </Typography>
+            )}
           </Grid>
         </Container>
+        <Footer />
       </main>
-
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          OnPaper
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </>
   );
 }

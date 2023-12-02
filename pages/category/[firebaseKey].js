@@ -8,9 +8,9 @@ import { useAuth } from '../../utils/context/authContext';
 import { getSingleCategory } from '../../api/categoryData';
 import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
-import Expense from '../../components/forms/Expense';
 import Popup from '../../components/Popup';
-import CreateCategoryForm from '../../components/forms/CreateCategoryForm';
+import CategoryForm from '../../components/forms/CategoryForm';
+import ExpenseForm from '../../components/forms/ExpenseForm';
 
 export default function CategoryDetails() {
   const router = useRouter();
@@ -32,8 +32,8 @@ export default function CategoryDetails() {
   }, []);
 
   // Setting Component to Pass as Prop - AddAnExpense and AddACategory
-  const createExpenseComponent = <Expense />;
-  const editCategoryComponent = <CreateCategoryForm obj={category} />;
+  const createExpenseComponent = <ExpenseForm />;
+  const editCategoryComponent = <CategoryForm obj={category} />;
 
   const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);
 

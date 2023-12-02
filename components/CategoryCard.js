@@ -6,14 +6,16 @@ import {
   IconButton,
   Card, Grid, CardActions, CardContent, Typography, Button,
 } from '@mui/material';
-import { deleteCateogries } from '../api/categoryData';
+import { useAuth } from '../utils/context/authContext';
+import deletingCategoryAndExpenses from '../api/mergedData';
 
 export default function CategoryCard({ categoryObj, onUpdate }) {
   const router = useRouter();
+  const { user } = useAuth();
 
   const deleteThisCategory = () => {
     if (window.confirm(`Delete ${categoryObj.name}? ALL RELATED EXPENSES WILL BE DELETED!!`)) {
-      deleteCateogries(categoryObj.firebaseKey).then(() => onUpdate());
+      deletingCategoryAndExpenses(categoryObj.firebaseKey, user.uid, onUpdate);
     }
   };
 

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 import {
-  TextField, DialogActions, Button,
+  TextField, DialogActions, Button, MenuItem,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { updateIncome } from '../../api/incomeData';
+import { createNewMonthlyIncome, updateIncome } from '../../api/incomeData';
 import { useAuth } from '../../utils/context/authContext';
 
 const date = new Date();
@@ -17,6 +17,8 @@ const initialState = {
   month: '',
   year: currYear,
 };
+
+const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
 
 export default function MonthlyIncome({ obj }) {
   const router = useRouter();
@@ -43,7 +45,7 @@ export default function MonthlyIncome({ obj }) {
       updateIncome(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      updateIncome(payload).then(() => {
+      createNewMonthlyIncome(payload).then(() => {
         router.push('/');
       });
     }
@@ -78,6 +80,23 @@ export default function MonthlyIncome({ obj }) {
           value={formInput.earnings}
           onChange={handleChange}
         />
+        <TextField
+          margin="dense"
+          id="name"
+          type="text"
+          name="year"
+          fullWidth
+          variant="standard"
+          label="Year"
+          value={formInput.year}
+          onChange={handleChange}
+          select
+        >
+          {years.map((year) => (
+            <MenuItem key={year} value={year}> {year}
+            </MenuItem>
+          ))}
+        </TextField>
         <DialogActions sx={{ mt: 0.45 }}>
           <Button type="submit">Submit</Button>
         </DialogActions>
