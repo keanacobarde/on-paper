@@ -142,9 +142,20 @@ export default function Dashboard() {
             </Stack>
           </Grid>
           <Grid container spacing={4}>
-            {categories.map((category) => (
+            {categories.length ? categories.map((category) => (
               <CategoryCard key={category.firebaseKey} categoryObj={category} onUpdate={getAllTheCategories} />
-            ))}
+            )) : (
+              <Typography
+                sx={{ mt: 2 }}
+                component="h1"
+                variant="h6"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                Hmm...no categories found - create some!
+              </Typography>
+            )}
           </Grid>
         </Container>
         <Footer />
