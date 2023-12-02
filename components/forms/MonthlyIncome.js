@@ -4,6 +4,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import {
   TextField, DialogActions, Button,
 } from '@mui/material';
+import { useRouter } from 'next/router';
+import { updateIncome } from '../../api/incomeData';
 
 const initialState = {
   earnings: '',
@@ -13,10 +15,11 @@ const initialState = {
 
 export default function MonthlyIncome({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const router = useRouter();
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +32,8 @@ export default function MonthlyIncome({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      console.warn(obj);
+      formInput.earnings = parseFloat(formInput.earnings);
+      updateIncome(formInput).then(() => router.push('/'));
     } else {
       console.warn('oof');
     }
