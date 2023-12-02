@@ -50,7 +50,7 @@ export default function Month({ obj }) {
             >
               Spending Limit
             </Typography>
-            <div className="money-display"> {obj.earnings} </div>
+            <div className="money-display"> ${obj.earnings} </div>
             <Typography
               component="h1"
               variant="h6"
@@ -60,7 +60,7 @@ export default function Month({ obj }) {
             >
               Amount Left to Spend:
             </Typography>
-            <div className="money-display"> {obj.earnings - monthlyExpensesTotal} </div>
+            <div className="money-display"> ${obj.earnings - monthlyExpensesTotal} </div>
           </Stack>
           <Stack
             sx={{ pt: 4 }}
