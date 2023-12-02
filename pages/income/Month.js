@@ -5,7 +5,7 @@ import {
 
 export default function Month() {
   return (
-    <main>
+    <>
       {/* Hero unit */}
       <Box
         sx={{
@@ -70,6 +70,6 @@ export default function Month() {
         </Grid>
         <Grid container spacing={4} />
       </Container>
-    </main>
+    </>
   );
 }
