@@ -6,7 +6,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteExpense } from '../api/expenseData';
 import Popup from './Popup';
-import Expense from './forms/Expense';
+import Expense from './forms/ExpenseForm';
 
 export default function ExpenseCard({ expenseObj, onUpdate }) {
   const deleteThisExpense = () => {

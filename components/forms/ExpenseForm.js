@@ -20,7 +20,7 @@ const initialState = {
   category: '',
 };
 
-export default function Expense({ obj }) {
+export default function ExpenseForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
   const [formInput, setFormInput] = useState(initialState);
@@ -137,7 +137,7 @@ export default function Expense({ obj }) {
   );
 }
 
-Expense.propTypes = {
+ExpenseForm.propTypes = {
   obj: PropTypes.shape({
     firebaseKey: PropTypes.string,
     name: PropTypes.string,
@@ -148,6 +148,6 @@ Expense.propTypes = {
   }),
 };
 
-Expense.defaultProps = {
+ExpenseForm.defaultProps = {
   obj: initialState,
 };
