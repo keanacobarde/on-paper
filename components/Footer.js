@@ -33,10 +33,10 @@ export default function Footer() {
           Find us!
         </Typography>
         <Stack direction="row" justifyContent="center">
-          <IconButton>
+          <IconButton href="https://www.linkedin.com/in/keana-cobarde">
             <LinkedInIcon />
           </IconButton>
-          <IconButton>
+          <IconButton href="https://github.com/keanacobarde">
             <GitHubIcon />
           </IconButton>
         </Stack>
