@@ -7,16 +7,22 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { updateIncome } from '../../api/incomeData';
+import { useAuth } from '../../utils/context/authContext';
+
+const date = new Date();
+const currYear = date.toLocaleDateString('default', { year: 'numeric' });
 
 const initialState = {
   earnings: '',
   month: '',
-  year: '',
+  year: currYear,
 };
 
 export default function MonthlyIncome({ obj }) {
-  const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
+  const { user } = useAuth();
+
+  const [formInput, setFormInput] = useState(initialState);
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
@@ -36,7 +42,10 @@ export default function MonthlyIncome({ obj }) {
       formInput.earnings = parseFloat(formInput.earnings);
       updateIncome(formInput).then(() => router.push('/'));
     } else {
-      console.warn('oof');
+      const payload = { ...formInput, uid: user.uid };
+      updateIncome(payload).then(() => {
+        router.push('/');
+      });
     }
   };
 
