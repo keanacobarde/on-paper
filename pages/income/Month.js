@@ -1,9 +1,24 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Box, Container, Typography, Stack, Grid,
 } from '@mui/material';
+import { getExpenses } from '../../api/expenseData';
 
-export default function Month() {
+export default function Month({ obj }) {
+  const [expenses, setExpenses] = useState([]);
+
+  const getMonthlyExpenses = () => {
+    getExpenses(obj.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === obj.month)));
+  };
+
+  const monthlyExpensesTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
+
+  useEffect(() => {
+    getMonthlyExpenses();
+  }, []);
+
   return (
     <>
       {/* Hero unit */}
@@ -32,7 +47,7 @@ export default function Month() {
             >
               Spending Limit
             </Typography>
-            <div className="money-display" />
+            <div className="money-display"> {obj.earnings} </div>
             <Typography
               component="h1"
               variant="h6"
@@ -42,7 +57,7 @@ export default function Month() {
             >
               Amount Left to Spend:
             </Typography>
-            <div className="money-display"> </div>
+            <div className="money-display"> {obj.earnings - monthlyExpensesTotal} </div>
           </Stack>
           <Stack
             sx={{ pt: 4 }}
@@ -73,3 +88,13 @@ export default function Month() {
     </>
   );
 }
+
+Month.propTypes = {
+  obj: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    earnings: PropTypes.string,
+    month: PropTypes.string,
+    uid: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
+};
