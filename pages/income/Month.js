@@ -6,6 +6,8 @@ import {
 } from '@mui/material';
 import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
+import MonthlyInome from '../../components/forms/MonthlyInome';
+import Popup from '../../components/Popup';
 
 export default function Month({ obj }) {
   const [expenses, setExpenses] = useState([]);
@@ -15,6 +17,9 @@ export default function Month({ obj }) {
   };
 
   const monthlyExpensesTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
+
+  const createMonthlyIncome = <MonthlyInome />;
+  const editMonthlyIncome = <MonthlyInome obj={obj} />;
 
   useEffect(() => {
     getMonthlyExpenses();
@@ -68,7 +73,10 @@ export default function Month({ obj }) {
             direction="row"
             spacing={2}
             justifyContent="center"
-          />
+          >
+            <Popup buttonName="Add Next Month" formTitle="Add a Month" formContent={createMonthlyIncome} />
+            <Popup buttonName="Edit Month" formTitle="Edit a Month" formContent={editMonthlyIncome} />
+          </Stack>
         </Container>
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">
