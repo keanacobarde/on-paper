@@ -20,11 +20,9 @@ const settings = ['Logout'];
 
 function ResponsiveAppBar() {
   const { user } = useAuth();
+  const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const router = useRouter();
-  console.warn(user);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

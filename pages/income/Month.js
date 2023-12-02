@@ -23,7 +23,6 @@ export default function Month({ obj }) {
 
   useEffect(() => {
     getMonthlyExpenses();
-    console.warn(obj);
   }, [obj.month]);
 
   return (
