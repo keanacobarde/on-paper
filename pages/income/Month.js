@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
-import MonthlyInome from '../../components/forms/MonthlyInome';
+import MonthlyInome from '../../components/forms/MonthlyIncome';
 import Popup from '../../components/Popup';
 
 export default function Month({ obj }) {
