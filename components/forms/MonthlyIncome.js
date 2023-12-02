@@ -6,7 +6,7 @@ import {
   TextField, DialogActions, Button,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { updateIncome } from '../../api/incomeData';
+import { createNewMonthlyIncome, updateIncome } from '../../api/incomeData';
 import { useAuth } from '../../utils/context/authContext';
 
 const date = new Date();
@@ -43,7 +43,7 @@ export default function MonthlyIncome({ obj }) {
       updateIncome(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      updateIncome(payload).then(() => {
+      createNewMonthlyIncome(payload).then(() => {
         router.push('/');
       });
     }
