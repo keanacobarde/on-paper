@@ -7,7 +7,6 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
 import { getIncome } from '../api/incomeData';
@@ -16,18 +15,7 @@ import { getExpenses } from '../api/expenseData';
 import Popup from '../components/Popup';
 import Expense from '../components/forms/Expense';
 import CreateCategoryForm from '../components/forms/CreateCategoryForm';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/keanacobarde">
-        OnPaper
-      </Link>{' '}
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
+import Footer from '../components/Footer';
 
 const date = new Date();
 const month = date.toLocaleDateString('default', { month: 'long' });
@@ -159,24 +147,8 @@ export default function Dashboard() {
             ))}
           </Grid>
         </Container>
+        <Footer />
       </main>
-
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          OnPaper
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </>
   );
 }
