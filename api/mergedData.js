@@ -17,6 +17,4 @@ const deletingCategoryAndExpenses = async (firebaseKey, uid, onUpdate) => {
   Promise.all(arrayOfPromises).then(deleteCateogries(firebaseKey).then(() => onUpdate()));
 };
 
-export default {
-  deletingCategoryAndExpenses,
-};
+export default deletingCategoryAndExpenses;
