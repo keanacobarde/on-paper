@@ -16,6 +16,7 @@ const initialState = {
 export default function CategoryForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
+
   const [formInput, setFormInput] = useState(initialState);
 
   useEffect(() => {
@@ -33,9 +34,11 @@ export default function CategoryForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
+      // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.spendingLimit = parseFloat(formInput.spendingLimit);
       updateCategory(formInput).then(() => router.push('/'));
     } else {
+      // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.spendingLimit = parseFloat(formInput.spendingLimit);
       const payload = { ...formInput, uid: user.uid };
       createNewCategory(payload).then(({ name }) => {

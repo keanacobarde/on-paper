@@ -9,16 +9,18 @@ import { useRouter } from 'next/router';
 import { createNewMonthlyIncome, updateIncome } from '../../api/incomeData';
 import { useAuth } from '../../utils/context/authContext';
 
+// Required for InitialState Object
 const date = new Date();
 const currYear = date.toLocaleDateString('default', { year: 'numeric' });
+
+// Required for Dropdown Menu
+const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
 
 const initialState = {
   earnings: '',
   month: '',
   year: currYear,
 };
-
-const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
 
 export default function MonthlyIncome({ obj }) {
   const router = useRouter();
@@ -41,6 +43,7 @@ export default function MonthlyIncome({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
+      // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.earnings = parseFloat(formInput.earnings);
       updateIncome(formInput).then(() => router.push('/'));
     } else {
