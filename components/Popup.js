@@ -20,6 +20,7 @@ export default function Popup({
 
   return (
     <>
+      {/* Ternay used to determine whether or not an icon is returned or a button is returned */}
       { buttonType === 'edit' ? (
         <IconButton aria-label="edit" onClick={handleClickOpen}>
           <EditNoteIcon />

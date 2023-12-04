@@ -5,6 +5,7 @@ import {
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
+// Component referenced ONLY within footer - doesn't need to be exported, as it is not referenced anywhere else.
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
