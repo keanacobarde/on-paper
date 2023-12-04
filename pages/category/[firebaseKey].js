@@ -12,32 +12,43 @@ import Popup from '../../components/Popup';
 import CategoryForm from '../../components/forms/CategoryForm';
 import ExpenseForm from '../../components/forms/ExpenseForm';
 
+// Used as a comparison within .filter functionality
+const date = new Date();
+const month = date.toLocaleDateString('default', { month: 'long' });
+
 export default function CategoryDetails() {
+  // Necessary Hooks and API Calls for updating
+
+  // Hooks - useRouter and useAuth
   const router = useRouter();
   const { user } = useAuth();
-  const date = new Date();
-  const month = date.toLocaleDateString('default', { month: 'long' });
+
+  // Obtains fbk for API querying
   const { firebaseKey } = router.query;
 
+  // Hooks - useState
   const [category, setCategory] = useState([]);
   const [expenses, setExpenses] = useState([]);
 
+  // API Calls - used to obtain expenses and filter based on realtime month
   const getMonthlyExpenses = () => {
     getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
   };
 
+  // Hooks - useEffect
   useEffect(() => {
     getSingleCategory(firebaseKey).then(setCategory);
     getMonthlyExpenses();
   }, []);
 
-  // Setting Component to Pass as Prop - AddAnExpense and AddACategory
-  const createExpenseComponent = <ExpenseForm />;
-  const editCategoryComponent = <CategoryForm obj={category} />;
-
+  // Filter and summation functionality.
   const monthlyExpenses = expenses?.filter((expense) => category.name === expense.category);
 
   const monthlyExpensesTotal = monthlyExpenses.reduce((acc, curr) => acc + curr.amount, 0);
+
+  // Setting Component to Pass as Prop - CreateAnExpense and EditACategory, must be within CategoryDetails scope to access 'category' variable.
+  const createExpenseComponent = <ExpenseForm />;
+  const editCategoryComponent = <CategoryForm obj={category} />;
 
   return (
     <main>
@@ -96,7 +107,7 @@ export default function CategoryDetails() {
 
         {/* End hero unit */}
 
-        {/* Start of category unit */}
+        {/* Start of expenses card unit */}
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Typography
             component="h1"

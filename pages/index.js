@@ -54,7 +54,7 @@ export default function Dashboard() {
     getMonthlyExpenses();
   }, []);
 
-  // Math Functionality - sums data called from API
+  // Math Functionality - sums data called from API to display beneath the month
   const monthlyIncome = income[0]?.earnings;
   const categoryTotal = categories?.reduce((acc, curr) => acc + curr.spendingLimit, 0);
   const expenseTotal = expenses?.reduce((acc, curr) => acc + curr.amount, 0);
