@@ -109,9 +109,20 @@ export default function CategoryDetails() {
           </Typography>
         </Grid>
         <Grid container spacing={4}>
-          {monthlyExpenses.map((card) => (
+          {monthlyExpenses.length ? monthlyExpenses.map((card) => (
             <ExpenseCard expenseObj={card} onUpdate={getMonthlyExpenses} key={card.firebaseKey} />
-          ))}
+          )) : (
+            <Typography
+              sx={{ mt: 2 }}
+              component="h1"
+              variant="h6"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+              Hmm...no expenses found - create some!
+            </Typography>
+          )}
         </Grid>
       </Container>
     </main>
