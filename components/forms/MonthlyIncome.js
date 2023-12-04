@@ -14,6 +14,12 @@ const date = new Date();
 const currYear = date.toLocaleDateString('default', { year: 'numeric' });
 
 // Required for Dropdown Menu
+const monthsArray = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+// Required for Dropdown Menu
 const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
 
 const initialState = {
@@ -61,17 +67,22 @@ export default function MonthlyIncome({ obj }) {
           Add an Expense. This can be anything - from gas money to utility bills to monthly subscriptions. Just make sure you have enough money alloted within your categories for it!
         </DialogContentText>
         <TextField
-          autoFocus
           margin="dense"
           id="name"
-          name="month"
-          label="Month"
           type="text"
+          name="month"
           fullWidth
           variant="standard"
+          label="Month"
           value={formInput.month}
           onChange={handleChange}
-        />
+          select
+        >
+          {monthsArray.map((month) => (
+            <MenuItem key={month} value={month}> {month}
+            </MenuItem>
+          ))}
+        </TextField>
         <TextField
           margin="dense"
           id="name"
