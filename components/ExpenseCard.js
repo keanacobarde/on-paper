@@ -16,7 +16,7 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
   };
 
   // Setting Component to Pass as Prop - Edit an Expense
-  const createExpenseComponent = <Expense obj={expenseObj} />;
+  const editExpenseComponent = <Expense obj={expenseObj} />;
 
   return (
     <Grid item xs={8} sm={6} md={4}>
@@ -40,7 +40,7 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
           <IconButton aria-label="delete" onClick={deleteThisExpense}>
             <DeleteIcon />
           </IconButton>
-          <Popup buttonType="edit" formTitle="Edit Expense" formContent={createExpenseComponent} />
+          <Popup buttonType="edit" formTitle="Edit Expense" formContent={editExpenseComponent} />
         </CardActions>
       </Card>
     </Grid>

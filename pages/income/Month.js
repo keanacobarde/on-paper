@@ -10,20 +10,27 @@ import MonthlyInome from '../../components/forms/MonthlyIncome';
 import Popup from '../../components/Popup';
 
 export default function Month({ obj }) {
+  // Necessary Hooks and API Calls for updating
+
+  // Hooks - useState
   const [expenses, setExpenses] = useState([]);
 
+  // API Call - obtaining all monthly expenses and filtering based on month
   const getMonthlyExpenses = () => {
     getExpenses(obj.uid).then((res) => setExpenses(res.filter((expense) => expense.month === obj.month)));
   };
 
-  const monthlyExpensesTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
-
-  const createMonthlyIncome = <MonthlyInome />;
-  const editMonthlyIncome = <MonthlyInome obj={obj} />;
-
+  // Hooks - useEffect
   useEffect(() => {
     getMonthlyExpenses();
   }, [obj.month]);
+
+  // Math Functionality - sums data called from API to display beneath the month
+  const monthlyExpensesTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
+
+  // Setting Component to Pass as Prop - Create and Edit a monthly income, must be within CategoryDetails scope to access 'obj' prop.
+  const createMonthlyIncome = <MonthlyInome />;
+  const editMonthlyIncome = <MonthlyInome obj={obj} />;
 
   return (
     <>

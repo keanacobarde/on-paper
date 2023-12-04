@@ -10,8 +10,15 @@ import { useAuth } from '../../utils/context/authContext';
 import { getCategories, getCategoryByName } from '../../api/categoryData';
 import { createNewExpense, updateExpense } from '../../api/expenseData';
 
+// Required for Initial State Object
 const date = new Date();
 const monthValue = date.toLocaleDateString('default', { month: 'long' });
+
+// Required for Dropdown Menu
+const monthsArray = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
 
 const initialState = {
   name: '',
@@ -23,12 +30,9 @@ const initialState = {
 export default function ExpenseForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
+
   const [formInput, setFormInput] = useState(initialState);
   const [categories, setCategories] = useState([]);
-  const monthsArray = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
-  ];
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
@@ -47,16 +51,18 @@ export default function ExpenseForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
+    // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.amount = parseFloat(formInput.amount);
-      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then(() => router.push('/')));
+      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then(() => router.push('/timeline')));
     } else {
+      // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.amount = parseFloat(formInput.amount);
       const payload = { ...formInput, uid: user.uid };
       createNewExpense(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateExpense(patchPayload).then(() => {
-          getCategoryByName(formInput.category).then((res) => {
-            router.push(`/category/${res[0].firebaseKey}`);
+          getCategoryByName(formInput.category).then(() => {
+            router.push('/timeline');
           });
         });
       });

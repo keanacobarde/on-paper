@@ -10,7 +10,10 @@ import { useAuth } from '../utils/context/authContext';
 import deletingCategoryAndExpenses from '../api/mergedData';
 
 export default function CategoryCard({ categoryObj, onUpdate }) {
+  // Imported for routing to Category Details page.
   const router = useRouter();
+
+  // Imported for usage within merged API call.
   const { user } = useAuth();
 
   const deleteThisCategory = () => {

@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
@@ -17,18 +16,25 @@ import CategoryForm from '../components/forms/CategoryForm';
 import Footer from '../components/Footer';
 import ExpenseForm from '../components/forms/ExpenseForm';
 
+// Required for the central header of page
 const date = new Date();
 const month = date.toLocaleDateString('default', { month: 'long' });
+
+// Setting Component to Pass as Prop - AddAnExpense and CreateCategory
+const createExpenseComponent = <ExpenseForm />;
+const createCategoryComponent = <CategoryForm />;
 
 export default function Dashboard() {
   // Necessary Hooks and API Calls for updating
 
+  // Hooks - usAuth, useState
   const { user } = useAuth();
 
   const [categories, setCategories] = React.useState([]);
   const [income, setIncome] = React.useState([]);
   const [expenses, setExpenses] = React.useState([]);
 
+  // Required API Calls for displayed data
   const getAllTheCategories = () => {
     getCategories(user.uid).then(setCategories);
   };
@@ -41,24 +47,20 @@ export default function Dashboard() {
     getExpenses(user.uid).then((response) => setExpenses(response.filter((expenseObj) => expenseObj.month === month)));
   };
 
+  // Hooks - useEffect
   React.useEffect(() => {
     getAllTheCategories();
     getMonthlyIncome();
     getMonthlyExpenses();
   }, []);
 
-  // Setting Component to Pass as Prop - AddAnExpense and CreateCategory
-  const createExpenseComponent = <ExpenseForm />;
-  const createCategoryComponent = <CategoryForm />;
-
-  // Math Functionality
+  // Math Functionality - sums data called from API to display beneath the month
   const monthlyIncome = income[0]?.earnings;
   const categoryTotal = categories?.reduce((acc, curr) => acc + curr.spendingLimit, 0);
   const expenseTotal = expenses?.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
     <>
-      <CssBaseline />
       <main>
         {/* Hero unit */}
         <Box
