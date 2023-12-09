@@ -36,7 +36,7 @@ export default function ExpenseForm({ obj }) {
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-
+    console.warn(router.pathname.toString() === '/timeline');
     getCategories(user.uid).then(setCategories);
   }, [obj]);
 
@@ -53,7 +53,13 @@ export default function ExpenseForm({ obj }) {
     if (obj.firebaseKey) {
     // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.amount = parseFloat(formInput.amount);
-      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then(() => router.push('/timeline')));
+      updateExpense(formInput).then(() => getCategoryByName(formInput.category).then(() => {
+        if (router.pathname.toString() === '/') {
+          router.push('/timeline');
+        } else if (router.pathname.toString() === '/timeline') {
+          router.push('/');
+        }
+      }));
     } else {
       // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.amount = parseFloat(formInput.amount);
@@ -62,7 +68,11 @@ export default function ExpenseForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         updateExpense(patchPayload).then(() => {
           getCategoryByName(formInput.category).then(() => {
-            router.push('/timeline');
+            if (router.pathname === '/') {
+              router.push('/timeline');
+            } else if (router.pathname.toString() === '/timeline') {
+              router.push('/');
+            }
           });
         });
       });
