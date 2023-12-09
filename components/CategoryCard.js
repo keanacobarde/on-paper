@@ -23,7 +23,7 @@ export default function CategoryCard({ categoryObj, onUpdate }) {
   };
 
   return (
-    <Grid item xs={8} sm={6} md={4}>
+    <Grid item xs={8} sm={6}>
       <Card
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >

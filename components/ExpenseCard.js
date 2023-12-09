@@ -19,7 +19,7 @@ export default function ExpenseCard({ expenseObj, onUpdate }) {
   const editExpenseComponent = <Expense obj={expenseObj} />;
 
   return (
-    <Grid item xs={8} sm={6} md={4}>
+    <Grid item xs={8} sm={6}>
       <Card
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
