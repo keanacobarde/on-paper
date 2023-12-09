@@ -68,11 +68,7 @@ export default function ExpenseForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         updateExpense(patchPayload).then(() => {
           getCategoryByName(formInput.category).then(() => {
-            if (router.pathname === '/') {
-              router.push('/timeline');
-            } else if (router.pathname.toString() === '/timeline') {
-              router.push('/');
-            }
+            router.push('/timeline');
           });
         });
       });
