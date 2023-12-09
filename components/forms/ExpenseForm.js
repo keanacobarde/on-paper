@@ -36,7 +36,7 @@ export default function ExpenseForm({ obj }) {
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-    console.warn(router.pathname.toString() === '/timeline');
+    console.warn(router.pathname.toString() === '/');
     getCategories(user.uid).then(setCategories);
   }, [obj]);
 
@@ -54,10 +54,10 @@ export default function ExpenseForm({ obj }) {
     // responsible for the conversion of the string-typed input into a float - for use within summation functionality
       formInput.amount = parseFloat(formInput.amount);
       updateExpense(formInput).then(() => getCategoryByName(formInput.category).then(() => {
-        if (router.pathname.toString() === '/') {
-          router.push('/timeline');
-        } else if (router.pathname.toString() === '/timeline') {
+        if (router.pathname.toString() === '/timeline') {
           router.push('/');
+        } else {
+          router.push('/timeline');
         }
       }));
     } else {
