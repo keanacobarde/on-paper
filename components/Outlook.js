@@ -7,7 +7,7 @@ export default function Outlook() {
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Typography
           component="h1"
-          variant="h1"
+          variant="h2"
           align="left"
           color="text.primary"
           gutterBottom

@@ -8,6 +8,7 @@ import { getExpenses } from '../../api/expenseData';
 import ExpenseCard from '../../components/ExpenseCard';
 import MonthlyInome from '../../components/forms/MonthlyIncome';
 import Popup from '../../components/Popup';
+import Outlook from '../../components/Outlook';
 
 export default function Month({ obj }) {
   // Necessary Hooks and API Calls for updating
@@ -101,7 +102,7 @@ export default function Month({ obj }) {
             Expenses
           </Typography>
         </Grid>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} sx={{ mb: 5 }}>
           {expenses.length ? expenses.map((expense) => <ExpenseCard expenseObj={expense} onUpdate={getMonthlyExpenses} key={expense.firebaseKey} />) : (
             <Typography
               sx={{ mt: 2 }}
@@ -115,6 +116,7 @@ export default function Month({ obj }) {
             </Typography>
           ) }
         </Grid>
+        <Outlook />
       </Container>
     </>
   );
