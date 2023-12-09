@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Card, Grid, Typography } from '@mui/material';
 
 export default function Outlook() {
   return (
@@ -15,7 +15,30 @@ export default function Outlook() {
           Outlook
         </Typography>
       </Grid>
-      <Grid container spacing={4} />
+      <Grid container spacing={4} sx={{ mt: 2 }}>
+        <Card sx={{ minWidth: 275 }}>
+          <Typography
+            component="h1"
+            variant="h4"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            Test
+          </Typography>
+        </Card>
+        <Card sx={{ minWidth: 275 }}>
+          <Typography
+            component="h1"
+            variant="h4"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            Test
+          </Typography>
+        </Card>
+      </Grid>
     </>
   );
 }
