@@ -17,18 +17,18 @@ export default function Outlook() {
           Outlook
         </Typography>
       </Grid>
-      <Grid container item xs={8} sx={{ mt: 2 }}>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
+      <Grid container xs="auto" sx={{ mt: 2 }}>
+        <Card item sx={{ minWidth: 275 }}>
+          <CardContent sx={{ flexGrow: 1 }}>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
+              Monthly Earnings
             </Typography>
           </CardContent>
         </Card>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
+        <Card item sx={{ minWidth: 275 }}>
+          <CardContent sx={{ flexGrow: 1 }}>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
+              Monthly Earnings
             </Typography>
           </CardContent>
         </Card>
