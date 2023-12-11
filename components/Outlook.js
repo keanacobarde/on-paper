@@ -9,8 +9,6 @@ import { Colors } from 'chart.js';
 import { getCategories } from '../api/categoryData';
 import { useAuth } from '../utils/context/authContext';
 
-ChartJS.register(Colors);
-
 export default function Outlook() {
   // Obtain Data for Doughnut Chart - establish necessary hooks
   const [categories, setCategories] = useState([]);
@@ -24,6 +22,20 @@ export default function Outlook() {
     getAllTheCateogries();
   }, []);
 
+  // Setting necessary values for Chart.JS functionality
+
+  // Registering color variables
+  ChartJS.register(Colors);
+
+  const colorOptions = {
+    plugins: {
+      colors: {
+        forceOverride: true,
+      },
+    },
+  };
+
+  // Data for Category Doughnut
   const categoryData = {
     labels: categories.map((category) => category.name),
     datasets: [
@@ -32,14 +44,6 @@ export default function Outlook() {
         data: categories.map((category) => category.spendingLimit),
       },
     ],
-  };
-
-  const colorOptions = {
-    plugins: {
-      colors: {
-        forceOverride: true,
-      },
-    },
   };
 
   return (
