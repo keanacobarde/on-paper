@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import {
   Card, Grid, Typography, CardContent,
 } from '@mui/material';
+import { Chart as ChartJS } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import { getCategories } from '../api/categoryData';
 import { useAuth } from '../utils/context/authContext';
@@ -18,6 +20,7 @@ export default function Outlook() {
 
   useEffect(() => {
     getAllTheCateogries();
+    console.warn(categories);
   }, []);
 
   const categoryData = {
@@ -26,9 +29,6 @@ export default function Outlook() {
       {
         label: 'Spending Limit',
         data: categories.map((category) => category.spendingLimit),
-        backgroungColor: [
-
-        ],
       },
     ],
   };
