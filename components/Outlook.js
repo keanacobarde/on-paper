@@ -59,22 +59,26 @@ export default function Outlook() {
           Outlook
         </Typography>
       </Grid>
-      <Grid container xs="auto" sx={{ mt: 2 }}>
-        <Card item sx={{ minWidth: 275 }}>
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Monthly Earnings
-            </Typography>
-            <Doughnut data={categoryData} options={colorOptions} />
-          </CardContent>
-        </Card>
-        <Card item sx={{ minWidth: 275 }}>
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Monthly Earnings
-            </Typography>
-          </CardContent>
-        </Card>
+      <Grid container xs="auto" sx={{ mt: 2 }} spacing={2}>
+        <Grid item xs={8} sm={6}>
+          <Card item sx={{ minWidth: 275 }}>
+            <CardContent sx={{ flexGrow: 1 }}>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                Monthly Earnings
+              </Typography>
+              <Doughnut data={categoryData} options={colorOptions} />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={8} sm={6}>
+          <Card item sx={{ minWidth: 275 }}>
+            <CardContent sx={{ flexGrow: 1 }}>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                Monthly Earnings
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </>
   );
