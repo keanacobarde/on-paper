@@ -116,7 +116,7 @@ export default function Month({ obj }) {
             </Typography>
           ) }
         </Grid>
-        <Outlook />
+        <Outlook monthlyEarnings={obj.earnings} totalExpenses={monthlyExpensesTotal} />
       </Container>
     </>
   );

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, Grid, Typography, CardContent,
 } from '@mui/material';
@@ -9,7 +10,7 @@ import { Colors } from 'chart.js';
 import { getCategories } from '../api/categoryData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function Outlook() {
+export default function Outlook({ monthlyEarnings, totalExpenses }) {
   // Obtain Data for Doughnut Chart - establish necessary hooks
   const [categories, setCategories] = useState([]);
   const { user } = useAuth();
@@ -59,12 +60,15 @@ export default function Outlook() {
           Outlook
         </Typography>
       </Grid>
-      <Grid container xs="auto" sx={{ mt: 2 }} spacing={2}>
+      <Grid container xs="auto" spacing={2}>
         <Grid item xs={8} sm={6}>
           <Card item sx={{ minWidth: 275 }}>
             <CardContent sx={{ flexGrow: 1 }}>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Monthly Earnings
+              </Typography>
+              <Typography sx={{ fontSize: 48 }} color="text.secondary" gutterBottom>
+                ${parseFloat(monthlyEarnings).toFixed(2)}
               </Typography>
               <Doughnut data={categoryData} options={colorOptions} />
             </CardContent>
@@ -74,7 +78,10 @@ export default function Outlook() {
           <Card item sx={{ minWidth: 275 }}>
             <CardContent sx={{ flexGrow: 1 }}>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                Monthly Earnings
+                Expenses
+              </Typography>
+              <Typography sx={{ fontSize: 48 }} color="text.secondary" gutterBottom>
+                ${totalExpenses.toFixed(2)}
               </Typography>
             </CardContent>
           </Card>
@@ -83,3 +90,8 @@ export default function Outlook() {
     </>
   );
 }
+
+Outlook.propTypes = {
+  monthlyEarnings: PropTypes.string.isRequired,
+  totalExpenses: PropTypes.number.isRequired,
+};
