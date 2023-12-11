@@ -6,8 +6,11 @@ import {
 } from '@mui/material';
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
+import { Colors } from 'chart.js';
 import { getCategories } from '../api/categoryData';
 import { useAuth } from '../utils/context/authContext';
+
+ChartJS.register(Colors);
 
 export default function Outlook() {
   // Obtain Data for Doughnut Chart - establish necessary hooks
@@ -20,7 +23,6 @@ export default function Outlook() {
 
   useEffect(() => {
     getAllTheCateogries();
-    console.warn(categories);
   }, []);
 
   const categoryData = {
@@ -31,6 +33,14 @@ export default function Outlook() {
         data: categories.map((category) => category.spendingLimit),
       },
     ],
+  };
+
+  const colorOptions = {
+    plugins: {
+      colors: {
+        forceOverride: true,
+      },
+    },
   };
 
   return (
@@ -52,7 +62,7 @@ export default function Outlook() {
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               Monthly Earnings
             </Typography>
-            <Doughnut data={categoryData} />
+            <Doughnut data={categoryData} options={colorOptions} />
           </CardContent>
         </Card>
         <Card item sx={{ minWidth: 275 }}>
