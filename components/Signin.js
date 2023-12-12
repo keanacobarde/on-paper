@@ -18,7 +18,6 @@ function Copyright(props) {
         OnPaper
       </Link>{' '}
       {new Date().getFullYear()}
-      .
     </Typography>
   );
 }
