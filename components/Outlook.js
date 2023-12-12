@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -10,7 +11,7 @@ import { Colors } from 'chart.js';
 import { getCategories } from '../api/categoryData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function Outlook({ monthlyEarnings, totalExpenses }) {
+export default function Outlook({ monthlyEarnings, totalExpenses, allExpenses }) {
   // Obtain Data for Doughnut Chart - establish necessary hooks
   const [categories, setCategories] = useState([]);
   const { user } = useAuth();
@@ -43,6 +44,19 @@ export default function Outlook({ monthlyEarnings, totalExpenses }) {
       {
         label: 'Spending Limit',
         data: categories.map((category) => category.spendingLimit),
+      },
+    ],
+  };
+
+  // Data for Expenses
+  const categoryExpenseArray = categories.map((category) => allExpenses.reduce(((acc, curr) => (category.name === curr.category ? acc + curr.amount : acc + 0)), 0));
+
+  const categoryExpenseData = {
+    labels: categories.map((category) => category.name),
+    datasets: [
+      {
+        label: 'Amount Spent',
+        data: categoryExpenseArray,
       },
     ],
   };
@@ -83,6 +97,7 @@ export default function Outlook({ monthlyEarnings, totalExpenses }) {
               <Typography sx={{ fontSize: 48 }} color="text.secondary" gutterBottom>
                 ${totalExpenses.toFixed(2)}
               </Typography>
+              <Doughnut data={categoryExpenseData} options={colorOptions} />
             </CardContent>
           </Card>
         </Grid>
@@ -94,4 +109,5 @@ export default function Outlook({ monthlyEarnings, totalExpenses }) {
 Outlook.propTypes = {
   monthlyEarnings: PropTypes.string.isRequired,
   totalExpenses: PropTypes.number.isRequired,
+  allExpenses: PropTypes.array.isRequired,
 };
