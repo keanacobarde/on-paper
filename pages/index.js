@@ -30,6 +30,16 @@ export default function Dashboard() {
   // Hooks - usAuth, useState
   const { user } = useAuth();
 
+  // Finding necessary user data for rendering purposes
+  const checkingAccAge = () => {
+    const timeDiff = parseFloat(user.metadata.b) - parseFloat(user.metadata.a);
+    if (timeDiff < 100) {
+      console.warn('new account');
+    } else {
+      console.warn('older account');
+    }
+  };
+
   const [categories, setCategories] = React.useState([]);
   const [income, setIncome] = React.useState([]);
   const [expenses, setExpenses] = React.useState([]);
@@ -52,6 +62,8 @@ export default function Dashboard() {
     getAllTheCategories();
     getMonthlyIncome();
     getMonthlyExpenses();
+    checkingAccAge();
+    console.warn(user.metadata, parseFloat(user.metadata.a));
   }, []);
 
   // Math Functionality - sums data called from API to display beneath the month
