@@ -48,16 +48,13 @@ CRUD: Create, Read, and Update
 - Usage of third-party UI library.
 - Usage of third-party data visualization library.  
 
-## LOOMS
-*Click below to see OnPaper in action!*
-
-
 ## Relevant Links
 - [Check out the deployed site](#)
 - [Wireframes](#https://www.figma.com/file/JR4j0Iu2gdUDLbuTe0dU1U/OnPaper---Wireframe---Keana-Cobarde?type=design&node-id=0%3A1&mode=design&t=MPeP58xt6PYIbmwz-1)
 - [Project Board](#https://github.com/users/keanacobarde/projects/9/views/1)
 - [Check out our technical flow!](#https://github.com/keanacobarde/on-paper/issues/4#issuecomment-1801091901)
 - [ERD? Sounds good to me!](#https://dbdiagram.io/d/OnPaper-654807b27d8bbd646587a975)
+- [Loom](#https://www.loom.com/share/23dd7bdbef774ae6bc49d1862784846c?sid=9ea37fcc-39b5-4148-bef5-9438ae29c59d)
 
 ## Code Snippet
 
@@ -79,8 +76,9 @@ Graph JS - Displaying Expenses
 
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
-<img width="auto" alt="Your Alt" src="your-link.png">
-
+<img width="auto" alt="Your Alt" src="../on-paper/assets/sign-in.png">
+<img width="auto" alt="Your Alt" src="../on-paper/assets/outlook-graphs.png">
+<img width="auto" alt="Your Alt" src="../on-paper/assets/homepage-catcards.png">
 
 ## Powered By: 
 - React.js
