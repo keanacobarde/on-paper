@@ -1,4 +1,4 @@
-# OnPaper [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)](https://app.netlify.com/sites/hiphoppizzaandwangspos/deploys)
+# OnPaper [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)]()
 
 Do want to save money? Do you want to gain more awareness of where you're spending your money and how? More than anything, do you want it to be at your fingertips? 
 
@@ -48,22 +48,39 @@ CRUD: Create, Read, and Update
 - Usage of third-party UI library.
 - Usage of third-party data visualization library.  
 
-## LOOMS OF HHPW
-*Click below to see HHP+WPOS in action!*
-https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
+## LOOMS
+*Click below to see OnPaper in action!*
+
 
 ## Relevant Links
-- [Check out the deployed site](#https://hiphoppizzaandwangspos.netlify.app/)
-- [Wireframes](#https://www.figma.com/file/4y3EZddALuBR3ouSEM57Np/MVP?node-id=0%3A1)
-- [Project Board](#https://github.com/orgs/nss-evening-cohort-24/projects/9/views/1)
-- [Check out our technical flow!](#https://user-images.githubusercontent.com/111099613/267167644-5f3dc7a1-576e-4323-9791-c46e2c5ece6c.png)
-- [ERD? Sounds good to me!](#https://user-images.githubusercontent.com/97858910/266849569-ca8b3488-c77c-4248-9c43-0f2b08b2fef5.png)
+- [Check out the deployed site](#)
+- [Wireframes](#https://www.figma.com/file/JR4j0Iu2gdUDLbuTe0dU1U/OnPaper---Wireframe---Keana-Cobarde?type=design&node-id=0%3A1&mode=design&t=MPeP58xt6PYIbmwz-1)
+- [Project Board](#https://github.com/users/keanacobarde/projects/9/views/1)
+- [Check out our technical flow!](#https://github.com/keanacobarde/on-paper/issues/4#issuecomment-1801091901)
+- [ERD? Sounds good to me!](#https://dbdiagram.io/d/OnPaper-654807b27d8bbd646587a975)
 
 ## Code Snippet
+
+Graph JS - Displaying Expenses
+```
+// Data for Expenses
+  const categoryExpenseArray = categories.map((category) => allExpenses.reduce(((acc, curr) => (category.name === curr.category ? acc + curr.amount : acc + 0)), 0));
+
+  const categoryExpenseData = {
+    labels: categories.map((category) => category.name),
+    datasets: [
+      {
+        label: 'Amount Spent',
+        data: categoryExpenseArray,
+      },
+    ],
+  };
+```
 
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
 <img width="auto" alt="Your Alt" src="your-link.png">
+
 
 ## Powered By: 
 - React.js
