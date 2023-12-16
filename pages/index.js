@@ -149,23 +149,17 @@ export default function Dashboard() {
         {/* End hero unit */}
         {/* Start of category unit */}
         <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            <Stack
-              sx={{ marginBottom: 5 }}
-              direction="row"
-              spacing={2}
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ mb: 2 }} justifyContent="space-between">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="left"
+              color="text.primary"
+              gutterBottom
             >
-              <Typography
-                component="h1"
-                variant="h2"
-                align="left"
-                color="text.primary"
-                gutterBottom
-              >
-                Categories
-              </Typography>
-              <Popup buttonName="Add a Category" formTitle="Create a Category" formContent={createCategoryComponent} />
-            </Stack>
+              Categories
+            </Typography>
+            <Popup buttonName="Add a Category" formTitle="Create a Category" formContent={createCategoryComponent} />
           </Grid>
           <Grid container spacing={4}>
             {categories.length ? categories.map((category) => (
