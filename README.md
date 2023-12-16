@@ -1,11 +1,32 @@
 # OnPaper [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)](https://app.netlify.com/sites/hiphoppizzaandwangspos/deploys)
 
-[View App](#https://hiphoppizzaandwangspos.netlify.app/)
-
-## Get Started 
 Do want to save money? Do you want to gain more awareness of where you're spending your money and how? More than anything, do you want it to be at your fingertips? 
 
 Look no further, OnPaper has you covered.
+
+[View App](#https://hiphoppizzaandwangspos.netlify.app/)
+
+## Get Started 
+Dependencies: 
+- Material UI
+- Chart JS
+
+Clone this repo and submit the following command: 
+
+```
+npm install 
+```
+This installs all the packages associated with the template: Next JS and others. 
+
+Material UI: 
+```
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+```
+Chart JS: 
+```
+npm install chart.js react-chartjs-2
+```
 
 ## About the User 
 You're a busy person. You have deadlines to meet and trains to catch. You're a student. You're a teacher. You're a doctor. You're a librarian. You're a parent. Maybe you have no idea where your money goes. Maybe you already have a good idea what your budge looks like. No matter what you are, you're looking to get a better handle on your money.
