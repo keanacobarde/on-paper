@@ -33,7 +33,7 @@ export default function Dashboard() {
   // Finding necessary user data for rendering purposes
   const checkingAccAge = () => {
     const timeDiff = parseFloat(user.metadata.b) - parseFloat(user.metadata.a);
-    if (timeDiff < 100) {
+    if (timeDiff < 5) {
       const monthsArray = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December',
@@ -47,7 +47,7 @@ export default function Dashboard() {
         };
         createNewMonthlyIncome(payload).then(({ name }) => {
           const patchPayload = { firebasekey: name };
-          updateIncome(patchPayload).then();
+          updateIncome(patchPayload).then(console.warn);
         });
       });
     }
