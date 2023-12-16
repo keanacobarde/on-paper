@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useAuth } from '../utils/context/authContext';
 import { getCategories } from '../api/categoryData';
-import { getIncome } from '../api/incomeData';
+import { createNewMonthlyIncome, getIncome, updateIncome } from '../api/incomeData';
 import CategoryCard from '../components/CategoryCard';
 import { getExpenses } from '../api/expenseData';
 import Popup from '../components/Popup';
@@ -29,6 +29,29 @@ export default function Dashboard() {
 
   // Hooks - usAuth, useState
   const { user } = useAuth();
+
+  // Finding necessary user data for rendering purposes
+  const checkingAccAge = () => {
+    const timeDiff = parseFloat(user.metadata.b) - parseFloat(user.metadata.a);
+    if (timeDiff < 2) {
+      const monthsArray = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December',
+      ];
+      monthsArray.forEach((monthInd) => {
+        const payload = {
+          month: monthInd,
+          year: date.toLocaleDateString('default', { year: 'numeric' }),
+          earnings: 0,
+          uid: user.uid,
+        };
+        createNewMonthlyIncome(payload).then(({ name }) => {
+          const patchPayload = { firebasekey: name };
+          updateIncome(patchPayload).then(console.warn);
+        });
+      });
+    }
+  };
 
   const [categories, setCategories] = React.useState([]);
   const [income, setIncome] = React.useState([]);
@@ -52,6 +75,7 @@ export default function Dashboard() {
     getAllTheCategories();
     getMonthlyIncome();
     getMonthlyExpenses();
+    checkingAccAge();
   }, []);
 
   // Math Functionality - sums data called from API to display beneath the month
