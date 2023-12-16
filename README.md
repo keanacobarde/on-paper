@@ -1,61 +1,90 @@
-# React/Next.js Template
+# OnPaper [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)]()
 
-[See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
+Do want to save money? Do you want to gain more awareness of where you're spending your money and how? More than anything, do you want it to be at your fingertips? 
 
-## Topics
-- [Get Started](#get-started)
-- [Starting the Project](#starting-the-project)
-- [Deploying on Netlify](#deploying-on-netlify)
-___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
+Look no further, OnPaper has you covered.
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
+[View App](#https://hiphoppizzaandwangspos.netlify.app/)
 
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
+## Get Started 
+Dependencies: 
+- Material UI
+- Chart JS
 
-## Starting the Project
-1. Create a Firebase project and set up authentication. Use [these videos](https://vimeo.com/showcase/codetracker-firebase) as a refresher if needed.
-1. Create a `.env` file at the root of the project
-1. Copy/Paste the contents of the `.env.sample` file to your newly created `.env` file.
-1. Copy over all of your Firebase values into the `.env` file.
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
+Clone this repo and submit the following command: 
 
-### If you see this, you are set to go!
-<img width="450" alt="Screen Shot 2022-07-06 at 1 07 27 PM" src="https://user-images.githubusercontent.com/29741570/177615077-9b6a75bc-0260-4d29-bb88-bd95a3140687.png">
+```
+npm install 
+```
+This installs all the packages associated with the template: Next JS and others. 
+
+Material UI: 
+```
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+```
+Chart JS: 
+```
+npm install chart.js react-chartjs-2
+```
+
+## About the User 
+You're a busy person. You have deadlines to meet and trains to catch. You're a student. You're a teacher. You're a doctor. You're a librarian. You're a parent. Maybe you have no idea where your money goes. Maybe you already have a good idea what your budge looks like. No matter what you are, you're looking to get a better handle on your money.
+
+## Features 
+OnPaper has three central components:
+- Reporting of monthly earnings
+- Creation of custom categories with spending limits, in which your monthly earnings can be divided amongst
+- Reporting of expenses that can be categorized 
+
+Also includes: 
+- A visual representation of the allocation of your monthly earnings, juxtaposed with your expenses, and what categories they belong within.
+
+CRUD: Create, Read, and Update
+- Partial CRUD on monthlyIncome entity, as depcited within the ERD.
+- Full CRUD on categories entity.
+- Full CRUD on expense entity.
+- Various implementations of array methods such as .reduce(), .filter().
+- Usage of third-party UI library.
+- Usage of third-party data visualization library.  
+
+## Relevant Links
+- [Check out the deployed site](#)
+- [Wireframes](#https://www.figma.com/file/JR4j0Iu2gdUDLbuTe0dU1U/OnPaper---Wireframe---Keana-Cobarde?type=design&node-id=0%3A1&mode=design&t=MPeP58xt6PYIbmwz-1)
+- [Project Board](#https://github.com/users/keanacobarde/projects/9/views/1)
+- [Check out our technical flow!](#https://github.com/keanacobarde/on-paper/issues/4#issuecomment-1801091901)
+- [ERD? Sounds good to me!](#https://dbdiagram.io/d/OnPaper-654807b27d8bbd646587a975)
+- [Loom](#https://www.loom.com/share/23dd7bdbef774ae6bc49d1862784846c?sid=9ea37fcc-39b5-4148-bef5-9438ae29c59d)
+
+## Code Snippet
+
+Graph JS - Displaying Expenses
+```
+// Data for Expenses
+  const categoryExpenseArray = categories.map((category) => allExpenses.reduce(((acc, curr) => (category.name === curr.category ? acc + curr.amount : acc + 0)), 0));
+
+  const categoryExpenseData = {
+    labels: categories.map((category) => category.name),
+    datasets: [
+      {
+        label: 'Amount Spent',
+        data: categoryExpenseArray,
+      },
+    ],
+  };
+```
 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
+<img width="auto" alt="Your Alt" src="../on-paper/assets/sign-in.png">
+<img width="auto" alt="Your Alt" src="../on-paper/assets/outlook-graphs.png">
+<img width="auto" alt="Your Alt" src="../on-paper/assets/homepage-catcards.png">
 
-**NOTES:** 
-- If you see the following error, you did not follow all the setup steps correctly and failed to add your Firebase creds. Go back and do that NOW.
+## Powered By: 
+- React.js
+- Next.js
+- Material UI
+- Chart.js
 
-<img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
-
-### Deploying on Netlify
-Netlify will automatically detect your project and prepopulate the settings, but should something go wrong and it does not, here are the commands:
-
-- Build Command: `npm run build`
-- Publish directory: `.next`
-
-#### Additional Steps to Take on Netlify
-- Add Environmental Variables
-    - Any Enviromental variables you are using in your `.env` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
-
-- Update Firebase URL Settings
-    - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributors
+- [Keana Cobarde](https://github.com/keanacobarde)
