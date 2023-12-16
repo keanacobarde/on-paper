@@ -50,11 +50,11 @@ CRUD: Create, Read, and Update
 
 ## Relevant Links
 - [Check out the deployed site](#)
-- [Wireframes](#https://www.figma.com/file/JR4j0Iu2gdUDLbuTe0dU1U/OnPaper---Wireframe---Keana-Cobarde?type=design&node-id=0%3A1&mode=design&t=MPeP58xt6PYIbmwz-1)
-- [Project Board](#https://github.com/users/keanacobarde/projects/9/views/1)
-- [Check out our technical flow!](#https://github.com/keanacobarde/on-paper/issues/4#issuecomment-1801091901)
-- [ERD? Sounds good to me!](#https://dbdiagram.io/d/OnPaper-654807b27d8bbd646587a975)
-- [Loom](#https://www.loom.com/share/23dd7bdbef774ae6bc49d1862784846c?sid=9ea37fcc-39b5-4148-bef5-9438ae29c59d)
+- [Wireframes](https://www.figma.com/file/JR4j0Iu2gdUDLbuTe0dU1U/OnPaper---Wireframe---Keana-Cobarde?type=design&node-id=0%3A1&mode=design&t=MPeP58xt6PYIbmwz-1)
+- [Project Board](https://github.com/users/keanacobarde/projects/9/views/1)
+- [Check out our technical flow!](https://github.com/keanacobarde/on-paper/issues/4#issuecomment-1801091901)
+- [ERD? Sounds good to me!](https://dbdiagram.io/d/OnPaper-654807b27d8bbd646587a975)
+- [Loom](https://www.loom.com/share/23dd7bdbef774ae6bc49d1862784846c?sid=9ea37fcc-39b5-4148-bef5-9438ae29c59d)
 
 ## Code Snippet
 
