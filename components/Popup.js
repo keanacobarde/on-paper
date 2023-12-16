@@ -26,7 +26,7 @@ export default function Popup({
           <EditNoteIcon />
         </IconButton>
       ) : (
-        <Button variant="contained" onClick={handleClickOpen}>
+        <Button variant="contained" onClick={handleClickOpen} sx={{ maxHeight: 40 }}>
           {buttonName}
         </Button>
       )}
