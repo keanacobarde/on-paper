@@ -33,7 +33,7 @@ export default function Dashboard() {
   // Finding necessary user data for rendering purposes
   const checkingAccAge = () => {
     const timeDiff = parseFloat(user.metadata.b) - parseFloat(user.metadata.a);
-    if (timeDiff < 5) {
+    if (timeDiff < 2) {
       const monthsArray = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December',
