@@ -1,10 +1,10 @@
-# OnPaper [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)]()
+# OnPaper [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)](https://onpaper.netlify.app)
 
 Do want to save money? Do you want to gain more awareness of where you're spending your money and how? More than anything, do you want it to be at your fingertips? 
 
 Look no further, OnPaper has you covered.
 
-[View App](#https://hiphoppizzaandwangspos.netlify.app/)
+[View App](https://onpaper.netlify.app)
 
 ## Get Started 
 Dependencies: 
@@ -49,7 +49,7 @@ CRUD: Create, Read, and Update
 - Usage of third-party data visualization library.  
 
 ## Relevant Links
-- [Check out the deployed site](#)
+- [Check out the deployed site](https://onpaper.netlify.app)
 - [Wireframes](https://www.figma.com/file/JR4j0Iu2gdUDLbuTe0dU1U/OnPaper---Wireframe---Keana-Cobarde?type=design&node-id=0%3A1&mode=design&t=MPeP58xt6PYIbmwz-1)
 - [Project Board](https://github.com/users/keanacobarde/projects/9/views/1)
 - [Check out our technical flow!](https://github.com/keanacobarde/on-paper/issues/4#issuecomment-1801091901)
