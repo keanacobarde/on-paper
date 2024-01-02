@@ -7,6 +7,8 @@ import Month from './income/Month';
 // Necessary to set default month that is being displayed
 const date = new Date();
 const currMon = date.toLocaleDateString('default', { month: 'short' });
+const currYearNotStr = date.getFullYear();
+const currYear = String(currYearNotStr);
 
 // Necessary for the rendering of the buttons
 const monthsArray = [
@@ -28,7 +30,7 @@ export default function Timeline() {
 
   // API Call - obtaining all monthly expenses and filtering based on month
   const getSelectedMonthlyIncome = () => {
-    getIncome(user.uid).then((res) => setSelectedMon(res.filter((mon) => mon.month.includes(currMonth))));
+    getIncome(user.uid).then((res) => setSelectedMon(res.filter((mon) => mon.month.includes(currMonth) && mon.year === currYear)));
   };
 
   // Hooks - useEffect
