@@ -19,6 +19,8 @@ import ExpenseForm from '../components/forms/ExpenseForm';
 // Required for the central header of page
 const date = new Date();
 const month = date.toLocaleDateString('default', { month: 'long' });
+const currYearNotStr = date.getFullYear();
+const currYear = String(currYearNotStr);
 
 // Setting Component to Pass as Prop - AddAnExpense and CreateCategory
 const createExpenseComponent = <ExpenseForm />;
@@ -63,7 +65,7 @@ export default function Dashboard() {
   };
 
   const getMonthlyIncome = () => {
-    getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month)));
+    getIncome(user.uid).then((response) => setIncome(response.filter((monthlyObj) => monthlyObj.month === month && monthlyObj.year === currYear)));
   };
 
   const getMonthlyExpenses = () => {
